@@ -1,0 +1,5 @@
+<%= "Welcome #{@admin.full_name}" %>
+
+<% @admin.properties.each do |property| %>
+<%= link_to property.name, property %>
+<% end %>
