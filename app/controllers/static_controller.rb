@@ -8,6 +8,11 @@ class StaticController < ApplicationController
     @tenant = Tenant.new
   end
 
+  def login
+    @tenant = Tenant.new
+
+  end
+
   def show
     @tenant = Tenant.find(params[:id])
   end
