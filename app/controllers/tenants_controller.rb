@@ -18,12 +18,13 @@ class TenantsController < ApplicationController
 
   def create
     @tenant = Tenant.create(tenant_params)
-    if @tenant.valid?
-      redirect_to @tenant
-    else
-      flash[:errors] = @tenant.errors.full_messages
-      redirect_to new_tenant_path
-    end
+    # if @tenant.valid?
+    #   redirect_to @tenant
+    # else
+    #   flash[:errors] = @tenant.errors.full_messages
+    #   redirect_to new_tenant_path
+    # end
+    redirect_to tenants_path
   end
 
   def update
@@ -42,7 +43,6 @@ class TenantsController < ApplicationController
   end
 
   private
-
   def tenant_params
     params.require(:tenant).permit(:first_name, :last_name, :email, :password, :hint_password, :address_id, :contract_id)
   end
