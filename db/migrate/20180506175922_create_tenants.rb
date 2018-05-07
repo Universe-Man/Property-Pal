@@ -8,6 +8,7 @@ class CreateTenants < ActiveRecord::Migration[5.2]
       t.string :hint_password
       t.integer :address_id
       t.integer :contract_id
+      t.integer :unit_id
 
       t.timestamps
     end

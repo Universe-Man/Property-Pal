@@ -14,7 +14,7 @@ Tenant.destroy_all
 #     Faker::Address.street_address + ", "+ Faker::Address.city
 # end
 
-Admin.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "", hint_password: "", address_id: nil, contract_id: nil, property_id: nil)
+Admin.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "", hint_password: "")
 
 
 # This file should contain all the record creation needed to seed the database with its default values.

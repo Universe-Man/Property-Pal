@@ -18,9 +18,6 @@ ActiveRecord::Schema.define(version: 2018_05_06_180438) do
     t.string "email"
     t.string "password"
     t.string "hint_password"
-    t.integer "address_id"
-    t.integer "contract_id"
-    t.integer "property_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -28,15 +25,14 @@ ActiveRecord::Schema.define(version: 2018_05_06_180438) do
   create_table "properties", force: :cascade do |t|
     t.string "name"
     t.integer "address_id"
-    t.integer "sector_id"
-    t.integer "unit_id"
+    t.integer "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "sectors", force: :cascade do |t|
     t.string "name"
-    t.integer "unit_id"
+    t.integer "property_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,13 +45,14 @@ ActiveRecord::Schema.define(version: 2018_05_06_180438) do
     t.string "hint_password"
     t.integer "address_id"
     t.integer "contract_id"
+    t.integer "unit_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "units", force: :cascade do |t|
     t.string "name"
-    t.integer "tenant_id"
+    t.integer "sector_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
