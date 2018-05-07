@@ -14,9 +14,30 @@ Tenant.destroy_all
 #     Faker::Address.street_address + ", "+ Faker::Address.city
 # end
 
-Admin.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "", hint_password: "")
+3.times do
+  Admin.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password(8), hint_password: "hi there")
+end
+
+125.times do
+  Tenant.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password(8), hint_password: "hi there")
+end
+
+5.times do
+  Property.create(name: Faker::Address.community)
+end
+
+10.times do
+  Sector.create(name: Faker::Number.between(1, 25))
+end
+
+100.times do
+  Unit.create(name: Faker::Number.between(1, 100))
+end
 
 
+# puts Tenant.create(first_name: "Ian", last_name: "Pollack", email: "ian@email.com", password: "password", hint_password: "self")
+
+# puts Unit.create(name: "Marshall Hill Apartments")
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
