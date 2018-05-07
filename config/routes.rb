@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :static, only: [:new, :show]
+  root 'static#index'
   resources :sectors
   resources :units
   resources :properties
