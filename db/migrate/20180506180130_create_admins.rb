@@ -6,9 +6,6 @@ class CreateAdmins < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :password
       t.string :hint_password
-      t.integer :address_id
-      t.integer :contract_id
-      t.integer :property_id
 
       t.timestamps
     end
