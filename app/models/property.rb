@@ -6,4 +6,9 @@ class Property < ApplicationRecord
   validates :address_id, presence: true
   validates :sector_id, presence: true
   validates :unit_id, presence: true
+
+  # def admin_name
+  #   Admin.find(self.admin_id).fullname
+  # end
+
 end
