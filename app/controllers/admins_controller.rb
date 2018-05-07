@@ -8,6 +8,10 @@ class AdminsController < ApplicationController
     @admin = Admin.find(params[:id])
     # @properties = Property.all
   end
+  def admin_login
+    @admin = Admin.new()
+
+  end
 
   def index
     @admins = Admin.all
