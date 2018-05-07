@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :properties
   resources :admins
   resources :tenants
+  get "/login", to: 'static#login'
   # post "/sessions", to: 'sessions#create'
   # post "/logout", to: 'sessions#destroy'
 
