@@ -6,4 +6,8 @@ class Tenant < ApplicationRecord
   validates :password, presence: true
   validates :address_id, presence: true
   validates :contract_id, presence: true
+
+  def fullname
+    self.first_name + " " + self.last_name
+  end
 end
