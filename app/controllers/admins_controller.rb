@@ -1,7 +1,7 @@
 class AdminsController < ApplicationController
 
   def new
-    @admin = Admin.new()
+    @admin = Admin.new
   end
 # comment
   def show
@@ -9,7 +9,6 @@ class AdminsController < ApplicationController
     # @properties = Property.all
   end
   def admin_login
-    @admin = Admin.new()
 
   end
 
