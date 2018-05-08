@@ -1,7 +1,10 @@
-
+<%= button_to 'Home', "/", method: :get %>
+<br><br>
+"Hello World"
+<br><br>
 <%= form_tag("/admins_dashboard", method: "post") do %>
   Property: <%= collection_select :property, :property_id, @properties, :id, :name %>
-  <%= submit_tag("Search"), property_path %>
+  <%= submit_tag("Search") %>
 <% end %>
 
 <%= form_tag("/admins_dashboard", method: "post") do %>
