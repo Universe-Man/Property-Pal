@@ -14,7 +14,15 @@ require 'faker'
 #     Faker::Address.street_address + ", "+ Faker::Address.city
 # end
 
+<<<<<<< HEAD
 2.times do
+=======
+100.times do
+  Unit.create(name: Faker::Number.between(1, 100))
+end
+
+3.times do
+>>>>>>> Ian
   Admin.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password(8), hint_password: "hi there")
 end
 
@@ -30,9 +38,13 @@ end
   Sector.create(name: Faker::Number.between(1, 25), property_id: rand(1..8))
 end
 
+<<<<<<< HEAD
 16.times do
   Unit.create(name: Faker::Number.between(1, 100), sector_id: rand(1..8))
 end
+=======
+
+>>>>>>> Ian
 
 
 # puts Tenant.create(first_name: "Ian", last_name: "Pollack", email: "ian@email.com", password: "password", hint_password: "self")

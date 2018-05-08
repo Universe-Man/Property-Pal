@@ -1,5 +1,5 @@
 class Tenant < ApplicationRecord
-  belongs_to :unit
+  belongs_to :unit, optional: true
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true
