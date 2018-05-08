@@ -12,6 +12,7 @@ class TenantsController < ApplicationController
   end
 
   def create
+    byebug
     @tenant = Tenant.create(tenant_params)
     if @tenant.valid?
       redirect_to tenant_homepage_path
@@ -35,6 +36,7 @@ class TenantsController < ApplicationController
 
 
   def update
+    byebug
     @tenant.update(tenant_params)
     if @tenant.valid?
       redirect_to @tenant

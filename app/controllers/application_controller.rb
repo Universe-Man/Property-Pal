@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
     # !nil --> true (negate taht to a false) 
   end
 
-  def verify_log_in
-    
-  end
+
+
+
+
 end

@@ -1,19 +1,7 @@
 class SectorsController < ApplicationController
-
+  before_action :fetch_sector, only: [:edit, :update, :show, :destroy, :property]
   def new
     @sector = Sector.new()
-  end
-
-  def show
-    @sector = Sector.find(params[:id])
-  end
-
-  def index
-    @sectors = Sector.all
-  end
-
-  def edit
-    @sector = Sector.find(params[:id])
   end
 
   def create
@@ -26,8 +14,19 @@ class SectorsController < ApplicationController
     end
   end
 
+  def show
+    @units = Unit.where(sector_id: params[:id])
+  end
+
+  def index
+    @sectors = Sector.all
+  end
+
+  def edit
+  end
+
   def update
-    @sector = Sector.update(sector_params)
+    @sector.update(sector_params)
     if @sector.valid?
       redirect_to @sector
     else
@@ -47,8 +46,8 @@ class SectorsController < ApplicationController
     params.require(:sector).permit(:name, :unit_id)
   end
 
-  # def find_property
-  #   Property.all.map do |p|
-
+  def fetch_sector
+    @sector = Sector.find(params[:id])
+  end
 
 end

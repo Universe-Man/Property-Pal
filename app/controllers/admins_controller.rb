@@ -63,7 +63,7 @@ class AdminsController < ApplicationController
   end
 
   def retrieve_info
-    byebug 
+    byebug
   end
 
   private
