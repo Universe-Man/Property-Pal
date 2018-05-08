@@ -1,5 +1,5 @@
 class TenantsController < ApplicationController
-
+  before_action :fetch_tenant, only: [:show, :edit, :update, :destroy]
   def new
     @tenant = Tenant.new()
   end
@@ -12,11 +12,9 @@ class TenantsController < ApplicationController
       flash[:errors] = @tenant.errors.full_messages
       redirect_to new_tenant_path
     end
-    redirect_to tenants_path
   end
-  
+
   def show
-    @tenant = Tenant.find(params[:id])
   end
 
   def index
@@ -24,13 +22,10 @@ class TenantsController < ApplicationController
   end
 
   def edit
-    @tenant = Tenant.find(params[:id])
-  end
-
-  
+  end  
 
   def update
-    @tenant = Tenant.update(tenant_params)
+    @tenant.update(tenant_params)
     if @tenant.valid?
       redirect_to @tenant
     else
@@ -48,5 +43,8 @@ class TenantsController < ApplicationController
   def tenant_params
     params.require(:tenant).permit(:first_name, :last_name, :email, :password, :hint_password) #, :address_id, :contract_id
   end
-
+  
+  def fetch_tenant
+    @tenant = Tenant.find(params[:id])
+  end
 end
