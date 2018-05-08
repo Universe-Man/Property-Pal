@@ -5,9 +5,12 @@ class TenantsController < ApplicationController
   end
 
   def tenant_login
+<<<<<<< HEAD
     @tenant = Tenant.new
 
     # @tenant = Tenant.find(params[email: , password:])
+=======
+>>>>>>> 92d6fd70a87604a92d356275ac0bd82972e4ca56
   end
 
   def homepage

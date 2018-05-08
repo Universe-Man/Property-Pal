@@ -1,11 +1,13 @@
 class PropertiesController < ApplicationController
 
   def new
-    @property = Property.new()
+    @property = Property.new
+    @admins = Admin.all
   end
 
   def show
     @property = Property.find(params[:id])
+    @sectors = Sector.where(property_id: params[:id])
   end
 
   def index
@@ -14,6 +16,7 @@ class PropertiesController < ApplicationController
 
   def edit
     @property = Property.find(params[:id])
+    @admins = Admin.all
   end
 
   def create
@@ -44,6 +47,6 @@ class PropertiesController < ApplicationController
   private
 
   def property_params
-    params.require(:property).permit(:name, :address_id, :sector_id, :unit_id)
+    params.require(:property).permit(:name, :admin_id)
   end
 end

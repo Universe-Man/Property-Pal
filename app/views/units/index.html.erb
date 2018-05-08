@@ -1,3 +1,8 @@
+
+
+<% @units.each do |u| %>
+<% if u.sector_id ==  %>
 <% @units.each do |unit| %>
+  <% if unit.sector_id == @sector.id %>
 <%= link_to unit.name, unit %>
 <% end %>

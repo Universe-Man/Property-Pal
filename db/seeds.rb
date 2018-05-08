@@ -27,7 +27,7 @@ end
 end
 
 4.times do
-  Property.create(name: Faker::Address.community, admin_id: rand(1..2))
+  Property.create(name: Faker::Address.community, admin_id: rand(1..3))
 end
 
 8.times do

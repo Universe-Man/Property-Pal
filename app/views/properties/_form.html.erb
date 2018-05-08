@@ -1,0 +1,6 @@
+<%= form_for @property do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.collection_select :admin_id, @admins, :id, :fullname %>
+<%= f.submit "Add/Edit a property"%>
+<% end %>
