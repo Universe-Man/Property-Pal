@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get "/admin_login", to: 'admins#admin_login'
   get '/properties/:id/sectors', to: 'sector#show'
   get '/sectors/:id/units', to: 'unit#show'
+  get "/tenant_login", to: 'tenants#tenant_login'
+  get "tenant_homepage", to: 'tenant#home'
+
   # post "/sessions", to: 'sessions#create'
   # post "/logout", to: 'sessions#destroy'
 

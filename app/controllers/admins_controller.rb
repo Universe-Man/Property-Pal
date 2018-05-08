@@ -1,24 +1,11 @@
 class AdminsController < ApplicationController
-
-  def new
-    @admin = Admin.new()
-  end
-
-  def show
-    @admin = Admin.find(params[:id])
-    # @properties = Property.all
-  end
+  before_action :fetch_admin, only: [:show, :edit, :update, :destroy]
+  
   def admin_login
-    @admin = Admin.new()
-
   end
-
-  def index
-    @admins = Admin.all
-  end
-
-  def edit
-    @admin = Admin.find(params[:id])
+  
+  def new
+    @admin = Admin.new
   end
 
   def create
@@ -31,8 +18,18 @@ class AdminsController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def index
+    @admins = Admin.all
+  end
+
+  def edit
+  end
+
   def update
-    @admin = Admin.update(admin_params)
+    @admin.update(admin_params)
     if @admin.valid?
       redirect_to @admin
     else
@@ -50,6 +47,10 @@ class AdminsController < ApplicationController
 
   def admin_params
     params.require(:admin).permit(:first_name, :last_name, :email, :password, :hint_password, :address_id, :contract_id, :property_id)
+  end
+
+  def fetch_admin
+    @admin = Admin.find(params[:id])
   end
 
 end

@@ -1,5 +1,11 @@
 <%= "Welcome #{@admin.fullname}" %>
 
+<%= @admin.email%> <br>
+<%= @admin.password%> <br>
+
+<%= button_to "Edit", edit_admin_path, method: "get"%>
+
 <% @admin.properties.each do |property| %>
 <%= link_to property.name, property %>
 <% end %>
+
