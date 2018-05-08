@@ -4,6 +4,17 @@ class TenantsController < ApplicationController
     @tenant = Tenant.new()
   end
 
+  def create
+    @tenant = Tenant.create(tenant_params)
+    if @tenant.valid?
+      redirect_to @tenant
+    else
+      flash[:errors] = @tenant.errors.full_messages
+      redirect_to new_tenant_path
+    end
+    redirect_to tenants_path
+  end
+  
   def show
     @tenant = Tenant.find(params[:id])
   end
@@ -16,17 +27,7 @@ class TenantsController < ApplicationController
     @tenant = Tenant.find(params[:id])
   end
 
-  def create
-    @tenant = Tenant.create(tenant_params)
-    # if @tenant.valid?
-    #   redirect_to @tenant
-    # else
-    #   flash[:errors] = @tenant.errors.full_messages
-    #   redirect_to new_tenant_path
-    # end
-    puts @tenant.errors.full_messages
-    redirect_to tenants_path
-  end
+  
 
   def update
     @tenant = Tenant.update(tenant_params)

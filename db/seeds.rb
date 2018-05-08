@@ -14,7 +14,7 @@ require 'faker'
 #     Faker::Address.street_address + ", "+ Faker::Address.city
 # end
 
-100.times do
+20.times do
   Unit.create(name: Faker::Number.between(1, 100))
 end
 
