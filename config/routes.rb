@@ -14,6 +14,9 @@ Rails.application.routes.draw do
 
 
   get "/tenant_login", to: 'tenants#tenant_login'
+  get "tenant_homepage", to: 'tenant#home'
+  get "/admins_dashboard", to: 'admins#dashboard'
+  post "/admins_dashboard", to: 'admins#retrieve_info'
 
   get "tenant_homepage", to: 'tenant#home'
   # post "/sessions", to: 'sessions#create'

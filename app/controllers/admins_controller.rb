@@ -1,5 +1,8 @@
 class AdminsController < ApplicationController
 
+  before_action :fetch_admin, only: [:show, :edit, :update, :destroy]
+
+
   def new
     @admin = Admin.new
   end
@@ -8,8 +11,6 @@ class AdminsController < ApplicationController
     @admin = Admin.find(params[:id])
     # @properties = Property.all
   end
-
-  before_action :fetch_admin, only: [:show, :edit, :update, :destroy]
 
 
   def admin_login
@@ -52,6 +53,17 @@ class AdminsController < ApplicationController
   def destroy
     @admin.destroy
     redirect_to admins_path
+  end
+
+  def dashboard
+    @properties = Property.all
+    @sectors = Sector.all
+    @units = Unit.all
+    @tenants = Tenant.all
+  end
+
+  def retrieve_info
+    byebug
   end
 
   private
