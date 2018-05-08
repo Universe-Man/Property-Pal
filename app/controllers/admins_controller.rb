@@ -1,5 +1,4 @@
 class AdminsController < ApplicationController
-<<<<<<< HEAD
 
   def new
     @admin = Admin.new
@@ -9,13 +8,13 @@ class AdminsController < ApplicationController
     @admin = Admin.find(params[:id])
     # @properties = Property.all
   end
-=======
+
   before_action :fetch_admin, only: [:show, :edit, :update, :destroy]
-  
->>>>>>> 219600bb6fa9877db3997095a8588ce44b5e0057
+
+
   def admin_login
   end
-  
+
   def new
     @admin = Admin.new
   end

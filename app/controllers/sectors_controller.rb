@@ -6,6 +6,7 @@ class SectorsController < ApplicationController
 
   def show
     @sector = Sector.find(params[:id])
+    @units = Unit.where(sector_id: params[:id])
   end
 
   def index
