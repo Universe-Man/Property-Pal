@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="omb_login">
-    <h3 class="omb_authTitle"> Admin Login
+    <h3 class="omb_authTitle">Administrator Login
     </h3>
     <div class="row omb_row-sm-offset-3 omb_socialButtons">
       <div class="col-xs-4 col-sm-2">
@@ -33,12 +33,12 @@
 
     <div class="row omb_row-sm-offset-3">
       <div class="col-xs-12 col-sm-6">
-        <%= form_tag(sessions_path, {:class => "omb_loginForm"}) do%>
+        <%= form_for @admin, html: {:class => "omb_loginForm"} do |f| %>
         <div class="input-group">
           <span class="input-group-addon">
             <i class="fa fa-user"></i>
           </span>
-          <%= email_field_tag :email, "",class: "form-control", :placeholder => "Email Address" %>
+          <%= f.text_field :email, name: "email", class: "form-control", :placeholder => "email address" %>
         </div>
         <span class="help-block"></span>
 
@@ -46,11 +46,10 @@
           <span class="input-group-addon">
             <i class="fa fa-lock"></i>
           </span>
-          <%= password_field_tag :password, "", class: "form-control", placeholder: "Password" %>
+          <%= f.password_field :password, name: "password", class: "form-control", placeholder: "Password" %>
         </div>
-        <br>
-        <!-- <span class="help-block">Password error</span> -->
-        <%= submit_tag "Login",id: "button", class: "btn btn-lg btn-primary btn-block" %>
+        <span class="help-block">Password error</span>
+        <%= f.submit "Login", class: "btn btn-lg btn-primary btn-block" %>
       <% end  %>
     </div>
   </div>
