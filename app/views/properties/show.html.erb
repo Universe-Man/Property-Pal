@@ -1,6 +1,8 @@
 <h1><%= @property.name %></h1>
 
 <p>Admin(s): <%= @property.admin.fullname %></p><br>
+
+<p>Sectors: </p>
 <ul>
 <% @sectors.map do |sector|%>
     <li><%= link_to sector.name, sector %></li>

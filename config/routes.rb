@@ -17,7 +17,25 @@ Rails.application.routes.draw do
   post "/sessions", to: "sessions#create", as: "sessions"
   # get "/dashboard", to: 'tenants#dashboard'
   get "/dashboard", to: 'admins#dashboard' #, as: "dashboard"
+  <%= button_to 'Home', "/", method: :get %>
+  <br><br>
+  "Hello World"
+  =======
 
+  <%= form_tag("/admins_dashboard", method: "post") do %>
+    Property: <%= collection_select :property, :property_id, @properties, :id, :name %>
+    <%= submit_tag("Search"), property_path %>
+  <% end %>
+
+  <%= form_tag("/admins_dashboard", method: "post") do %>
+    Sector:   <%= collection_select :sector, :sector_id, @sectors, :id, :name %>
+    <%= submit_tag("Search") %>
+  <% end %>
+
+  <%= form_tag("/admins_dashboard", method: "post") do %>
+    Unit:     <%= collection_select :unit, :unit_id, @units, :id, :name %>
+    <%= submit_tag("Search") %>
+  <% end %>
 
 
   # ICEBOXED

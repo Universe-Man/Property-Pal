@@ -2,11 +2,11 @@ require 'faker'
 
 #Destroy all seeds before populating new ones
 #In case there's re-seeding that needs to be done.
-# Admin.destroy_all
-# Property.destroy_all
-# Sector.destroy_all
-# Unit.destroy_all
-# Tenant.destroy_all
+Admin.destroy_all
+Property.destroy_all
+Sector.destroy_all
+Unit.destroy_all
+Tenant.destroy_all
 
 
 # Helper Method to make a full address ("123 Street, City")
@@ -23,7 +23,7 @@ end
 end
 
 32.times do
-  Tenant.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password(8), hint_password: "hi there", unit_id: rand(1..16))
+  Tenant.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password(8), hint_password: "hi there", contract_id: rand(1..16), unit_id: rand(1..16))
 end
 
 4.times do

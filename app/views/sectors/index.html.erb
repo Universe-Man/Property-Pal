@@ -1,8 +1,8 @@
-<h1><%= @sectors.property_id.name %>'s Sectors</h1>
+<h1>All Sectors</h1>
 <ul>
-<% @sectors.each do |s| %>
-  <% if s.property_id == @property.id %>
-    <li><%= s.name %></li>
+<% @sectors.each do |sector| %>
+  <% if !sector.property_id.nil? %>
+    <li><%= link_to sector.name, sector %></li>
   <% end %>
 <% end %>
 </ul>

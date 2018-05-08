@@ -1,0 +1,6 @@
+<%= form_for @sector do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.collection_select :property_id, @property, :id, :name %>
+<%= f.submit "Add/Edit a sector"%>
+<% end %>

@@ -1,7 +1,9 @@
-<h1> <%= @sector.name %></h1>
+<h1>Sector: <%= @sector.name %></h1>
 
 <p>Units: <% @units.map do |u| %></p>
 <ul>
   <li><%= link_to u.name, u %></li>
 <% end %>
 </ul>
+
+<%= link_to "Edit Sector", edit_sector_path%>
