@@ -1,7 +1,7 @@
 <h1><%= @tenant.fullname %>'s Home Page</h1>
 
 Email: <%= @tenant.email %><br>
-Lease Number: <%= @tenant.contract_id%><br>
+Lease Number: <%= @tenant.contract_id %><br>
 Unit Number: <%= @tenant.unit_id %>
 
 <%= button_to "Edit", edit_tenant_path, method: "get" %> <br>
