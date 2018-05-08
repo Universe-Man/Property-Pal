@@ -6,11 +6,11 @@ class UnitsController < ApplicationController
 
   def show
     @unit = Unit.find(params[:id])
+    @tenants = Tenant.where(unit_id: params[:id])
   end
 
   def index
     @units = Unit.all
-    @tenants = Tenant.where(unit_id: params[:id])
   end
 
   def edit
