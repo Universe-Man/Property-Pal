@@ -14,27 +14,33 @@ Tenant.destroy_all
 #     Faker::Address.street_address + ", "+ Faker::Address.city
 # end
 
-20.times do
-  Unit.create(name: Faker::Number.between(1, 100), sector_id: rand(1..20))
-end
-
 3.times do
   Admin.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password(8), hint_password: "hi there")
 end
 
-32.times do
-  Tenant.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password(8), hint_password: "hi there", contract_id: rand(1..16), unit_id: rand(1..16))
+2.times do 
+  3.times do |i|
+    Property.create(name: Faker::Address.community, admin_id: i+1)
+  end
 end
 
-4.times do
-  Property.create(name: Faker::Address.community, admin_id: rand(1..3))
+2.times do
+  6.times do |i|
+    Sector.create(name: Faker::Number.between(1, 25), property_id: i+1)
+  end
 end
 
-8.times do
-  Sector.create(name: Faker::Number.between(1, 25), property_id: rand(1..8))
+2.times do
+  12.times do |i|
+    Unit.create(name: Faker::Number.between(1, 100), sector_id: i+1)
+  end
 end
 
-
+2.times do
+  24.times do |i|
+    Tenant.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password(8), hint_password: "hi there", contract_id: rand(1..16), unit_id: i+1)
+  end
+end
 
 # puts Tenant.create(first_name: "Ian", last_name: "Pollack", email: "ian@email.com", password: "password", hint_password: "self")
 
