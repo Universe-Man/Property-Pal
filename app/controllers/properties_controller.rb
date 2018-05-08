@@ -7,6 +7,7 @@ class PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
+    @sectors = Sector.where(property_id: params[:id])
   end
 
   def index
