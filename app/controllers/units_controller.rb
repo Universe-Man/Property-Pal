@@ -10,6 +10,7 @@ class UnitsController < ApplicationController
 
   def index
     @units = Unit.all
+    @sectors = Sector.all
   end
 
   def edit
