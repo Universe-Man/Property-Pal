@@ -3,7 +3,7 @@ class AdminsController < ApplicationController
   def new
     @admin = Admin.new()
   end
-
+# comment
   def show
     @admin = Admin.find(params[:id])
     # @properties = Property.all
