@@ -12,15 +12,20 @@ class TenantsController < ApplicationController
   end
 
   def create
+
     @tenant = Tenant.create(tenant_params)
+
     if @tenant.valid?
-      redirect_to tenant_homepage_path
+      
+      redirect_to success_path
     else
       flash[:errors] = @tenant.errors.full_messages
       redirect_to new_tenant_path
     end
   end
+  def success
 
+  end
   def show
   end
 

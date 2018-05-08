@@ -1,6 +1,12 @@
 <%= button_to 'Home', "/", method: :get %>
 <br><br>
-"Hello World"
+"Welcom to the dashboard ADMIN!"
+
+<% if admin_logged_in? %>
+  <%= button_to "Log out", logout_path %>
+  <% else %>
+    <%= button_to "Log in", login_path, method: :get %>
+<% end %>
 <br><br>
 <%= form_tag("/admins_dashboard", method: "post") do %>
   Property: <%= collection_select :property, :property_id, @properties, :id, :name %>
