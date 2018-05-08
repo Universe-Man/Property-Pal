@@ -1,3 +1,3 @@
-<% @property.sectors each do |sector| %>
-<%= link_to sector.name, sector %>
-<% end %>
+<%= @property.name %>
+<%= @property.admin.fullname %>
+<%= link_to 'Edit', edit_property_path(@property) %>
