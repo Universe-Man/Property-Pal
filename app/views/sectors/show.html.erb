@@ -1,7 +1,8 @@
 <h1>Sector: <%= @sector.name %></h1>
 
+<p>Units: </p>
 <ul>
-<p>Units: <% @units.map do |u| %></p>
+<% @units.map do |u| %></p>
   <li><%= link_to u.name, u %></li>
 <% end %>
 </ul>
