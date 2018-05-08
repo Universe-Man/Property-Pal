@@ -10,7 +10,7 @@ class UnitsController < ApplicationController
 
   def index
     @units = Unit.all
-    @sectors = Sector.all
+    @tenants = Tenant.where(unit_id: params[:id])
   end
 
   def edit

@@ -5,7 +5,6 @@ class SectorsController < ApplicationController
   end
 
   def show
-    byebug
     @sector = Sector.find(params[:id])
     @units = Unit.where(sector_id: params[:id])
   end
