@@ -1,7 +1,8 @@
-<%= "Welcome #{@admin.fullname}" %>
+<h1><%= "Welcome #{@admin.fullname}" %></h1>
 
-<%= @admin.email%> <br>
-<%= @admin.password%> <br>
+<br>
+<h2>Email: <%= @admin.email%></h2>
+ <br>
 
 <%= button_to "Edit", edit_admin_path, method: "get"%>
 

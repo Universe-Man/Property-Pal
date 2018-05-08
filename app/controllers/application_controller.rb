@@ -1,15 +1,20 @@
 class ApplicationController < ActionController::Base
 
-  def current_user
-    if session[:user_id]
-      User.find(session[:user_id])
+  def current_admin
+    if session[:admin_id]
+      Admin.find(session[:admin_id])
     end
   end
 
-  def logged_in?
-    !!current_user #double negation, if true user exists, false if it doesn't
+  def admin_logged_in?
+    !!current_admin #double negation, if true user exists, false if it doesn't
     #!<user instance> --> falase
-    # !nil --> true (negate taht to a false) 
+    # !nil --> true (negate taht to a false)
+  end
+  def tenant_logged_in?
+    !!current_tenant #double negation, if true user exists, false if it doesn't
+    #!<user instance> --> falase
+    # !nil --> true (negate taht to a false)
   end
 
 
