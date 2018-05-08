@@ -3,14 +3,5 @@
 <p>Units: <% @units.map do |u| %></p>
 <ul>
   <li><%= link_to u.name, u %></li>
-<% end %>    
-</ul>
-
-
-
-
-
-
-<% @sector.units each do |unit| %>
-<%= link_to unit.name, unit %>
 <% end %>
+</ul>

@@ -15,7 +15,7 @@ require 'faker'
 # end
 
 20.times do
-  Unit.create(name: Faker::Number.between(1, 100))
+  Unit.create(name: Faker::Number.between(1, 100), sector_id: rand(1..20))
 end
 
 3.times do
