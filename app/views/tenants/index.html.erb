@@ -1,3 +1,5 @@
+<ul>
 <% @tenants.each do |tenant| %>
-<%= link_to tenant.fullname, tenant %>
+<li><%= link_to tenant.fullname, tenant %></li>
 <% end %>
+</ul>

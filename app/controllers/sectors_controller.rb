@@ -46,5 +46,9 @@ class SectorsController < ApplicationController
   def sector_params
     params.require(:sector).permit(:name, :unit_id)
   end
-  
+
+  # def find_property
+  #   Property.all.map do |p|
+
+
 end

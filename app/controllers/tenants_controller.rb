@@ -1,11 +1,27 @@
 class TenantsController < ApplicationController
-
+  before_action :fetch_tenant, only: [:show, :edit, :update, :destroy]
   def new
     @tenant = Tenant.new()
   end
 
+  def tenant_login
+  end
+
+  def homepage
+    @tenant = Tenant.find_by
+  end
+
+  def create
+    @tenant = Tenant.create(tenant_params)
+    if @tenant.valid?
+      redirect_to tenant_homepage_path
+    else
+      flash[:errors] = @tenant.errors.full_messages
+      redirect_to new_tenant_path
+    end
+  end
+
   def show
-    @tenant = Tenant.find(params[:id])
   end
 
   def index
@@ -16,19 +32,10 @@ class TenantsController < ApplicationController
     @tenant = Tenant.find(params[:id])
   end
 
-  def create
-    @tenant = Tenant.create(tenant_params)
-    # if @tenant.valid?
-    #   redirect_to @tenant
-    # else
-    #   flash[:errors] = @tenant.errors.full_messages
-    #   redirect_to new_tenant_path
-    # end
-    redirect_to tenants_path
-  end
+
 
   def update
-    @tenant = Tenant.update(tenant_params)
+    @tenant.update(tenant_params)
     if @tenant.valid?
       redirect_to @tenant
     else
@@ -44,7 +51,15 @@ class TenantsController < ApplicationController
 
   private
   def tenant_params
-    params.require(:tenant).permit(:first_name, :last_name, :email, :password, :hint_password, :address_id, :contract_id)
+    params.require(:tenant).permit(:first_name, :last_name, :email, :password, :hint_password) #, :address_id, :contract_id
+  end
+
+  def fetch_tenant
+    @tenant = Tenant.find(params[:id])
+  end
+
+  def tenant_login_params
+    params.require(:tenant).permit(:email, :password)
   end
 
 end

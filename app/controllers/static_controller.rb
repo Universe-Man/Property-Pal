@@ -8,10 +8,7 @@ class StaticController < ApplicationController
     @tenant = Tenant.new
   end
 
-  def login
-    @tenant = Tenant.new
-
-  end
+  
 
   def show
     @tenant = Tenant.find(params[:id])
@@ -24,5 +21,9 @@ class StaticController < ApplicationController
   end
 
   def destroy
+  end
+private
+  def login_params
+
   end
 end

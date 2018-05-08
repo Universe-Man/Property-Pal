@@ -1,11 +1,5 @@
-<h1> Create your account </h1>
+<%= render "/partials/admin_navigation" %>
 
-<% if flash[:errors].any? %>
-    <ul>
-        <%= flash[:errors].map do |err|  %>
-            <li><%= err %></li>
-        <%end%>
-    </ul>    
-<%end%>
+<h1> Create new Admin account </h1>
 
 <%= render 'form'%>
