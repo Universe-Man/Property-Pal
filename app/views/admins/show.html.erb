@@ -1,14 +1,11 @@
-<%= "Welcome #{@admin.fullname}" %>
-<<<<<<< HEAD
-=======
+<h1><%= "Welcome #{@admin.fullname}" %></h1>
 
-<%= @admin.email%> <br>
-<%= @admin.password%> <br>
+<br>
+<h2>Email: <%= @admin.email%></h2>
+ <br>
 
 <%= button_to "Edit", edit_admin_path, method: "get"%>
->>>>>>> 219600bb6fa9877db3997095a8588ce44b5e0057
 
 <% @admin.properties.each do |property| %>
 <%= link_to property.name, property %>
 <% end %>
-

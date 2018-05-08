@@ -7,17 +7,23 @@ Rails.application.routes.draw do
   resources :admins
   resources :tenants
 
-  get "/login", to: 'static#login'
-  get "/admin_login", to: 'admins#admin_login'
   get '/properties/:id/sectors', to: 'sector#show'
   get '/sectors/:id/units', to: 'unit#show'
 
 
   get "/tenant_login", to: 'tenants#tenant_login'
+  get "/login", to: "sessions#new", as: "login"
 
-  get "tenant_homepage", to: 'tenant#home'
-  # post "/sessions", to: 'sessions#create'
+  post "/sessions", to: "sessions#create", as: "sessions"
+  # get "/dashboard", to: 'tenants#dashboard'
+  get "/dashboard", to: 'admins#dashboard' #, as: "dashboard"
+
+
+
+  # ICEBOXED
   # post "/logout", to: 'sessions#destroy'
+  # get "/admin_login", to: 'admins#admin_login'
 
+  # get "/login", to: 'static#login', as: 'login'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
