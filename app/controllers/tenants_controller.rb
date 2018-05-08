@@ -5,6 +5,8 @@ class TenantsController < ApplicationController
   end
 
   def tenant_login
+    @tenant = Tenant.new
+
     # @tenant = Tenant.find(params[email: , password:])
   end
 
@@ -13,6 +15,7 @@ class TenantsController < ApplicationController
   end
 
   def create
+    byebug
     @tenant = Tenant.create(tenant_params)
     if @tenant.valid?
       redirect_to tenant_homepage_path
@@ -36,6 +39,7 @@ class TenantsController < ApplicationController
 
 
   def update
+    byebug
     @tenant.update(tenant_params)
     if @tenant.valid?
       redirect_to @tenant

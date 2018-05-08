@@ -1,4 +1,5 @@
 class Tenant < ApplicationRecord
+  has_secure_password
   belongs_to :unit, optional: true
   validates :first_name, presence: true
   validates :last_name, presence: true

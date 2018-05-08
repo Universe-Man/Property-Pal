@@ -1,4 +1,5 @@
 class Admin < ApplicationRecord
+  has_secure_password
   has_many :properties
   has_many :sectors, through: :properties
   validates :first_name, presence: true
