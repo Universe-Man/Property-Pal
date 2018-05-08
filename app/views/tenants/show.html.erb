@@ -1,6 +1,6 @@
 <h1><%= @tenant.fullname %>'s Home Page</h1>
 
-<% @unit.tenants each do |tenant| %>
+<% @unit.tenants.each do |tenant| %>
 <%= link_to tenant.fullname, tenant %>
 <% end %>
 
