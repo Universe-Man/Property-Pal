@@ -3,3 +3,7 @@
 
 <div id="welcome_div"> <h1 id="welcome" class=" ">Welcome to Property Pal!</h1>
 </div>
+<br>
+<% if flash[:notice] %>
+  <div style="text-align:center;"class="notice"><h2><%= flash[:notice] %></h2></div>
+  <% end %>
