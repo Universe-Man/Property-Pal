@@ -56,6 +56,7 @@ class AdminsController < ApplicationController
   end
 
   def dashboard
+    
     #Admin MUST BE LOGGED IN for this to work
     if session[:admin_id]
       @admin = Admin.find(session[:admin_id])
@@ -65,7 +66,7 @@ class AdminsController < ApplicationController
       @tenants = @units.map{|unit| unit.tenants}.flatten
     else
       flash[:error] = "You must be logged in to view the dashboard."
-      redirect_to login_path 
+      redirect_to login_path
     end
   end
 

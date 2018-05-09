@@ -8,6 +8,13 @@ class SessionsController < ApplicationController
     end
   end
 
+
+  num = 4
+  def factorial(num)
+    total = (1..num).to_a.inject(:*)
+    puts total
+  end
+
   def create
 
     @tenant = Tenant.find_by(email: params[:email])
@@ -27,7 +34,6 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    byebug
     if !session[:admin_id].nil?
       session[:admin_id] = nil
       redirect_to root_path
