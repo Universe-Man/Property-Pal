@@ -1,3 +1,7 @@
+
+Gchart.pie(:data => Unit.all, :title => Vacancy, :size => '400x200')
+
+
 class AdminsController < ApplicationController
 
   before_action :fetch_admin, only: [:show, :edit, :update, :destroy]
@@ -56,7 +60,6 @@ class AdminsController < ApplicationController
   end
 
   def dashboard
-    
     #Admin MUST BE LOGGED IN for this to work
     if session[:admin_id]
       @admin = Admin.find(session[:admin_id])

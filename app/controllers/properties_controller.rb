@@ -1,3 +1,4 @@
+
 class PropertiesController < ApplicationController
   before_action :fetch_property, only: [:show, :edit, :update, :destroy]
   def new
