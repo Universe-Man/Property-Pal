@@ -7,19 +7,19 @@ class TenantsController < ApplicationController
 
 
   def create
-
     @tenant = Tenant.create(tenant_params)
-
     if @tenant.valid?
-
       redirect_to success_path
     else
       # flash[:errors] = @tenant.errors.full_messages
       redirect_to new_tenant_path
     end
   end
-  def success
 
+  def success
+    render :success
+    sleep 3
+    redirect_to login_path
   end
   def show
   end
@@ -54,12 +54,12 @@ class TenantsController < ApplicationController
 
   def destroy
     @tenant.destroy
-    redirect_to tenants_path
+    redirect_to root_path
   end
 
   private
   def tenant_params
-    params.require(:tenant).permit(:first_name, :last_name, :email, :password, :hint_password) #, :address_id, :contract_id
+    params.require(:tenant).permit(:first_name, :last_name, :email, :password_digest, :hint_password) #, :address_id, :contract_id
   end
 
   def fetch_tenant

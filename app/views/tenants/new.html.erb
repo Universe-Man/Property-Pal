@@ -2,4 +2,8 @@
 
 <h1> Create a new account </h1>
 
+<% if flash[:errors] %>
+<div class="notice"> <%= flash[:errors] %> </div>
+  <% end %>
+
 <%= render 'form'%>

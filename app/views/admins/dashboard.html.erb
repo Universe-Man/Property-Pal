@@ -6,19 +6,20 @@
 <%= button_to 'Home', "/", method: :get %>
 
 
-<br><br>
-<p>Take me to: </p>
-<%= form_tag("/admins_dashboard", method: "post") do %>
-  Property: <%= collection_select :property, :property_id, @properties, :id, :name %>
-  <%= submit_tag("Search") %>
-<% end %>
+<br><br><br><br>
 
-<%= form_tag("/admins_dashboard", method: "post") do %>
-  Sector:   <%= collection_select :sector, :sector_id, @sectors, :id, :name %>
-  <%= submit_tag("Search") %>
+<h4>Take me to: </h4>
+<%= form_tag("/admins_redir_from_dash", method: "get") do %>
+  Property: <%= collection_select :property, :property_id, @properties, :id, :name, {:prompt => 'Property'} %>
+  <%= submit_tag("Go to Property") %>
 <% end %>
-
-<%= form_tag("/admins_dashboard", method: "post") do %>
-  Unit:     <%= collection_select :unit, :unit_id, @units, :id, :name %>
-  <%= submit_tag("Search") %>
+<br>
+<%= form_tag("/admins_redir_from_dash", method: "get") do %>
+  Sector:   <%= collection_select :sector, :sector_id, @sectors, :id, :prop_and_sector, {:prompt => 'Property|Sector'} %>
+  <%= submit_tag("Go to Sector") %>
+<% end %>
+<br>
+<%= form_tag("/admins_redir_from_dash", method: "get") do %>
+  Unit:     <%= collection_select :unit, :unit_id, @units, :id, :prop_sect_unit, {:prompt => 'Property|Sector|Unit'} %>
+  <%= submit_tag("Go to Unit") %>
 <% end %>

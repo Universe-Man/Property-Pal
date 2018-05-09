@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   # get "/tenant_login", to: 'tenants#tenant_login'
   get "/login", to: "sessions#new", as: "login"
+  post "/logout", to: 'sessions#destroy'
 
   post "/sessions", to: "sessions#create", as: "sessions"
   # get "/dashboard", to: 'tenants#dashboard'
@@ -21,8 +22,9 @@ Rails.application.routes.draw do
   # get '/tenants/:id/dashboard', to: 'tenants#dashboard', as: 'tenants_dashboard'
 
 
+  get "/admins_redir_from_dash", to: "admins#redir_from_dash"
+
   # ICEBOXED
-  post "/logout", to: 'sessions#destroy'
   # get "/admin_login", to: 'admins#admin_login'
 
   # get "/login", to: 'static#login', as: 'login'

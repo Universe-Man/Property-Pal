@@ -70,6 +70,21 @@ class AdminsController < ApplicationController
     end
   end
 
+  def redir_from_dash
+    if params.include?(:unit)
+      @unit = Unit.find(params[:unit][:unit_id])
+      redirect_to unit_path(@unit)
+    elsif params.include?(:sector)
+      @sector = Sector.find(params[:sector][:sector_id])
+      redirect_to sector_path(@sector)
+    elsif params.include?(:property)
+      @property = Property.find(params[:property][:property_id])
+      redirect_to property_path(@property)
+    else
+      redirect_to admin_dashboard_path
+    end
+  end
+
   def retrieve_info
     #byebug
   end
