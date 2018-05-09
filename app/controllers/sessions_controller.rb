@@ -21,16 +21,23 @@ class SessionsController < ApplicationController
       end
     elsif @tenant && @tenant.authenticate(params[:password])
       if params[:admin] == "1"
+<<<<<<< HEAD
         byebug
         flash[:errors] = "You do not have Admin access"
         redirect_to login_path
+=======
+        flash[:errors] = "You do not have Admin access"
+>>>>>>> 7e01227be67a70f727f2f65ced42b9fea5027946
       else
         byebug
         session[:tenant_id] = @tenant.id
         redirect_to tenant_dashboard_path
       end
     else
-      
+<<<<<<< HEAD
+
+=======
+>>>>>>> 7e01227be67a70f727f2f65ced42b9fea5027946
       flash[:errors] = "Cannot find email or verify password"
       redirect_to login_path
     end
