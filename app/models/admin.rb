@@ -5,11 +5,8 @@ class Admin < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true
-  # validates :address_id, presence: true
-  # validates :contract_id, presence: true
-  # validates :property_id, presence: true
-
+  validates :password_digest, presence: true
+  
 #Helper method to return the full name of an admin
   def fullname
     self.first_name + " " + self.last_name

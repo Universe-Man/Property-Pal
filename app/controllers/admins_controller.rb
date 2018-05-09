@@ -56,6 +56,8 @@ class AdminsController < ApplicationController
   end
 
   def dashboard
+
+    #@admin = Admin.find(session[:admin_id]) or something like that
     @properties = Property.all
     @sectors = Sector.all
     @units = Unit.all

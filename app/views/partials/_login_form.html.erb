@@ -2,7 +2,7 @@
 <div class="container">
 
   <div class="omb_login">
-    <h3 class="omb_authTitle"> Tenant Login
+    <h3 class="omb_authTitle"> Login
     </h3>
     <div class="row omb_row-sm-offset-3 omb_socialButtons">
       <div class="col-xs-4 col-sm-2">
@@ -52,22 +52,24 @@
         <br>
         <!-- <span class="help-block">Password error</span> -->
         <%= submit_tag "Login",id: "button", class: "btn btn-lg btn-primary btn-block" %>
-      <% end  %>
+
     </div>
   </div>
 
   <div class="row omb_row-sm-offset-3">
     <div class="col-xs-12 col-sm-3">
-      <label class="checkbox">
-        <input type="checkbox" value="remember-me">Remember Me
+      <label style="font-size:20px; border:solid; background:lightgrey; text-align: center;" class="checkbox text-bold">
+        <%= check_box_tag(:admin) %>
+        <b><%= label_tag :admin, "Admin! " %></b>
       </label>
     </div>
-    <div class="col-xs-12 col-sm-3">
+    <!-- <div class="col-xs-12 col-sm-3">
       <p class="omb_forgotPwd">
         <a href="#">Forgot password?</a>
       </p>
-    </div>
+    </div> -->
   </div>
+  <% end  %>
 </div>
 
 </div>

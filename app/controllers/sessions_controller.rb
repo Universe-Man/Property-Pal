@@ -1,18 +1,26 @@
 class SessionsController < ApplicationController
-
+  helper_method :admin_logged_in?
   def new
     if admin_logged_in?
-      redirect_to dashboard_path
+      redirect_to admin_dashboard_path
+    elsif tenant_logged_in?
+      redirect_to tenant_dashboard_path
     end
   end
 
   def create
 
-    @admin = Admin.find_by(email: params[:email])
-    if @admin && @admin.authenticate(params[:password])
+    @tenant = Tenant.find_by(email: params[:email])
+    if params[:admin] == "1"
 
-      session[:admin_id] = @admin.id
-      redirect_to dashboard_path
+      @admin = Admin.find_by(email: params[:email])
+      if @admin && @admin.authenticate(params[:password])
+        session[:admin_id] = @admin.id
+        redirect_to admin_dashboard_path
+      end
+    elsif @tenant && @tenant.authenticate(params[:password])
+          session[:tenant_id] = @tenant.id
+          redirect_to tenant_dashboard_path
     else
       flash[:errors] = ["Cannot find email or verify password"]
       redirect_to login_path
@@ -20,10 +28,10 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    session[:admin_id] = nil
     # session.delete(:user_id)
 
-    redirect_to login_path
+    redirect_to root_path
   end
 
   def user_params
