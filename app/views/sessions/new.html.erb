@@ -6,5 +6,9 @@
 <% if flash[:notice] %>
   <div class="notice"><h2><%= flash[:notice] %></h2></div>
   <% end %>
+<% if flash[:errors] %>
+  <div class="errors"><h2><%= flash[:errors] %></h2></div>
+<% end %>
+
 
 <%= render "/partials/login_form" %>

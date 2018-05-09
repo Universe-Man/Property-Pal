@@ -1,9 +1,8 @@
-<h1>Are we using this form? </h1>
 <%= form_for @admin do |f|%>
 <%= f.label :email%>
 <%= f.text_field :email%><br>
 <%= f.label :password%>
-<%= f.text_field :password%><br>
+<%= f.password_field :password%><br>
 <%= f.label :hint_password%>
 <%= f.text_field :hint_password%><br>
 <%= f.label :first_name%>
