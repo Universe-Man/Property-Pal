@@ -69,6 +69,11 @@ class AdminsController < ApplicationController
     end
   end
 
+  def redir_from_dash
+    byebug
+    redirect_to static_path
+  end
+
   def retrieve_info
     #byebug
   end

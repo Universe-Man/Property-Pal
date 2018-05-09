@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get "/admin-dashboard", to: 'admins#dashboard' #, as: "dashboard"
   get "/tenant-dashboard", to: 'tenants#dashboard'
 
-
+  get "/admins_redir_from_dash", to: "admins#redir_from_dash"
 
   # ICEBOXED
   post "/logout", to: 'sessions#destroy'

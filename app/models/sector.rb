@@ -7,8 +7,8 @@ class Sector < ApplicationRecord
 
   # validates :unit_id, presence: true
 
-  def sector_and_prop
-    if !self.property.name.nil?
+  def prop_and_sector
+    if !self.property.nil?
       self.property.name + " | " + self.name
     else
       self.name
