@@ -1,4 +1,7 @@
-<h1>"Welcome to the dashboard <%=current_admin.fullname%>!"</h1> 
+<!-- #navigation partial is within admins directory -->
+<%= render "/partials/admin_navigation" %>
+
+<h1>"Welcom to the dashboard <%=current_admin.fullname%>!"</h1>
 <%= button_to "Log out", logout_path %> <br>
 <%= button_to 'Home', "/", method: :get %>
 

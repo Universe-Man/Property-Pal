@@ -1,6 +1,8 @@
+
 <%= button_to 'Home', "/", method: :get %>
 <br><br>
 "Welcome TENANT!"
+<%= @tenant.first_name %>
 <br><br>
 <% if tenant_logged_in? %>
   <%= button_to "Log out", logout_path %>

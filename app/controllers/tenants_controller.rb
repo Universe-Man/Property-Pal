@@ -4,12 +4,7 @@ class TenantsController < ApplicationController
     @tenant = Tenant.new()
   end
 
-  def tenant_login
-  end
 
-  def homepage
-    @tenant = Tenant.find_by
-  end
 
   def create
     @tenant = Tenant.create(tenant_params)
@@ -18,7 +13,7 @@ class TenantsController < ApplicationController
       flash[:notice] = "Account Successfully Created"
       redirect_to login_path
     else
-      flash[:errors] = @tenant.errors.full_messages
+      # flash[:errors] = @tenant.errors.full_messages
       redirect_to new_tenant_path
     end
   end
@@ -29,6 +24,14 @@ class TenantsController < ApplicationController
   end
 
   def show
+  end
+
+  def dashboard
+    if tenant_logged_in?
+      @tenant = Tenant.find(session[:tenant_id])
+    else flash[:error] = "You must be logged in to view the dashboard"
+      redirect_to login_path
+    end
   end
 
   def index

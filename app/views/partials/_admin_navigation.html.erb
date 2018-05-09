@@ -38,10 +38,16 @@
       <div class="nav navbar-nav navbar-right">
 
         <div class="">
-          <a class="navbar-text btn" role="button" href="<%= login_path %>" >
-            <b>Tenant Login</b></a>
+          <a class="navbar-text btn" role="button" href="<%= admin_path(@admin) %>" >
+            <b>Settings/Profile</b></a>
+            <% if admin_logged_in? %>
+            <a class="navbar-text btn" role="button" href="<%= logout_path %>">
+              <b>Logout</b></a>
+            <% else %>
             <a class="navbar-text btn" role="button" href="<%= new_admin_path %>">
-              <b>Admin Sign-Up</b></a>
+              <b>Sign-In</b></a>
+            <% end %>
+
 
         </div>
 
