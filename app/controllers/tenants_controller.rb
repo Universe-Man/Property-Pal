@@ -1,7 +1,7 @@
 class TenantsController < ApplicationController
   before_action :fetch_tenant, only: [:show, :edit, :update, :destroy]
   def new
-    @tenant = Tenant.new()
+    @tenant = Tenant.new
   end
 
   def tenant_login
@@ -16,7 +16,7 @@ class TenantsController < ApplicationController
     @tenant = Tenant.create(tenant_params)
 
     if @tenant.valid?
-      
+
       redirect_to success_path
     else
       flash[:errors] = @tenant.errors.full_messages

@@ -3,7 +3,7 @@ class Unit < ApplicationRecord
   has_many :tenants
 
   validates :name, presence: true
-  validates :sector_id, presence: true, uniqueness: true
+  validates :sector_id, presence: true #, uniqueness: true
 
   # def admin
 
