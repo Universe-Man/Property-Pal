@@ -1,6 +1,10 @@
 
 
-<h1><%= @tenant.fullname %>'s Home Page</h1>
+<h1><%= @tenant.fullname %></h1>
+
+<% if flash[:notice] %>
+  <div style="text-align:center;"class="notice"><h2><%= flash[:notice] %></h2></div>
+  <% end %>
 
 Email: <%= @tenant.email %><br>
 Lease Number: <%= @tenant.contract_id %><br>

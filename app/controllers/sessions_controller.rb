@@ -8,27 +8,37 @@ class SessionsController < ApplicationController
     end
   end
 
-
-  num = 4
-  def factorial(num)
-    total = (1..num).to_a.inject(:*)
-    puts total
-  end
-
   def create
-
     @tenant = Tenant.find_by(email: params[:email])
-    if params[:admin] == "1"
+    is_admin= params[:admin]
+
+    if params[:admin] == "1" && @tenant.nil?
       @admin = Admin.find_by(email: params[:email])
       if @admin && @admin.authenticate(params[:password])
+
         session[:admin_id] = @admin.id
         redirect_to admin_dashboard_path
       end
     elsif @tenant && @tenant.authenticate(params[:password])
-          session[:tenant_id] = @tenant.id
-          redirect_to tenant_dashboard_path
+      if params[:admin] == "1"
+<<<<<<< HEAD
+        byebug
+        flash[:errors] = "You do not have Admin access"
+        redirect_to login_path
+=======
+        flash[:errors] = "You do not have Admin access"
+>>>>>>> 7e01227be67a70f727f2f65ced42b9fea5027946
+      else
+        byebug
+        session[:tenant_id] = @tenant.id
+        redirect_to tenant_dashboard_path
+      end
     else
-      flash[:errors] = ["Cannot find email or verify password"]
+<<<<<<< HEAD
+
+=======
+>>>>>>> 7e01227be67a70f727f2f65ced42b9fea5027946
+      flash[:errors] = "Cannot find email or verify password"
       redirect_to login_path
     end
   end

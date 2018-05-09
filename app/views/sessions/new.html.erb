@@ -4,7 +4,11 @@
 <br>
 <br>
 <% if flash[:notice] %>
-  <div class="notice"><h2><%= flash[:notice] %></h2></div>
+  <div style="text-align:center;"class="notice"><h2><%= flash[:notice] %></h2></div>
   <% end %>
+<% if flash[:errors] %>
+  <div style="text-align:center;"class="errors"><h2><%= flash[:errors] %></h2></div>
+<% end %>
+
 
 <%= render "/partials/login_form" %>

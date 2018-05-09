@@ -24,7 +24,6 @@ class SectorsController < ApplicationController
 
   def edit
     @sector = Sector.find(params[:id])
-    byebug
     @properties = Property.all#where(property_id: params[:id])
   end
 

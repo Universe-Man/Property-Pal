@@ -4,20 +4,13 @@ class TenantsController < ApplicationController
     @tenant = Tenant.new
   end
 
-
-
   def create
     @tenant = Tenant.create(tenant_params)
     if @tenant.valid?
-
-
-
-
       flash[:notice] = "Account Successfully Created"
       redirect_to login_path
-
     else
-      # flash[:errors] = @tenant.errors.full_messages
+      flash[:errors] = "Account must include a first and last name, email, and password."
       redirect_to new_tenant_path
     end
   end
@@ -28,6 +21,7 @@ class TenantsController < ApplicationController
   end
 
   def show
+    # flash[:notice] = "Account Updated"
   end
 
   def dashboard
@@ -52,14 +46,16 @@ class TenantsController < ApplicationController
     @tenant.update(tenant_params)
     if @tenant.valid?
       redirect_to @tenant
+      flash[:notice] = "Account Updated"
     else
-      flash[:errors] = @tenant.errors.full_messages
+      flash[:errors] = "Account must include a first and last name, email, and password."#@tenant.errors.full_messages
       redirect_to edit_tenant_path(@tenant)
     end
   end
 
   def destroy
     @tenant.destroy
+    flash[:notice] = "Account Deleted"
     redirect_to root_path
   end
 
