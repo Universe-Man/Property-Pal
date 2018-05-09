@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
 
     @tenant = Tenant.find_by(email: params[:email])
     if params[:admin] == "1"
-
       @admin = Admin.find_by(email: params[:email])
       if @admin && @admin.authenticate(params[:password])
         session[:admin_id] = @admin.id
