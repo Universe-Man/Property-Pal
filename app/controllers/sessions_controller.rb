@@ -28,10 +28,14 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:admin_id] = nil
-    # session.delete(:user_id)
-
-    redirect_to root_path
+    byebug
+    if !session[:admin_id].nil?
+      session[:admin_id] = nil
+      redirect_to root_path
+    elsif !session[:tenant_id].nil?
+      session[:tenant_id] = nil
+      redirect_to root_path
+    end
   end
 
   def user_params

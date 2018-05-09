@@ -16,7 +16,7 @@ class TenantsController < ApplicationController
     @tenant = Tenant.create(tenant_params)
 
     if @tenant.valid?
-      
+
       redirect_to success_path
     else
       flash[:errors] = @tenant.errors.full_messages
@@ -40,7 +40,6 @@ class TenantsController < ApplicationController
 
 
   def update
-    byebug
     @tenant.update(tenant_params)
     if @tenant.valid?
       redirect_to @tenant
