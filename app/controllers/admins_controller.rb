@@ -56,16 +56,21 @@ class AdminsController < ApplicationController
   end
 
   def dashboard
-
-    #@admin = Admin.find(session[:admin_id]) or something like that
-    @properties = Property.all
-    @sectors = Sector.all
-    @units = Unit.all
-    @tenants = Tenant.all
+    #Admin MUST BE LOGGED IN for this to work
+    if session[:admin_id]
+      @admin = Admin.find(session[:admin_id])
+      @properties = Property.where(admin_id: @admin.id)
+      @sectors = @properties.map{|prop| prop.sectors}.flatten
+      @units = @sectors.map{|sect| sect.units}.flatten
+      @tenants = @units.map{|unit| unit.tenants}.flatten
+    else
+      flash[:error] = "You must be logged in to view the dashboard."
+      redirect_to login_path 
+    end
   end
 
   def retrieve_info
-    byebug
+    #byebug
   end
 
   private
