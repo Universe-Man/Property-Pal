@@ -4,18 +4,11 @@ class TenantsController < ApplicationController
     @tenant = Tenant.new
   end
 
-
-
   def create
     @tenant = Tenant.create(tenant_params)
     if @tenant.valid?
-
-
-
-
       flash[:notice] = "Account Successfully Created"
       redirect_to login_path
-
     else
       # flash[:errors] = @tenant.errors.full_messages
       redirect_to new_tenant_path
