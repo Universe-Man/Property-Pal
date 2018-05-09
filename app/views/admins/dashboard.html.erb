@@ -1,4 +1,4 @@
-<h1>"Welcom to the dashboard <%=current_admin.fullname%>!"</h1> 
+<h1>"Welcome to the dashboard <%=current_admin.fullname%>!"</h1> 
 <%= button_to "Log out", logout_path %> <br>
 <%= button_to 'Home', "/", method: :get %>
 
@@ -11,12 +11,12 @@
   <%= submit_tag("Go to Property") %>
 <% end %>
 <br>
-<%= form_tag("/admins_redir_from_dash", method: "post") do %>
+<%= form_tag("/admins_redir_from_dash", method: "get") do %>
   Sector:   <%= collection_select :sector, :sector_id, @sectors, :id, :prop_and_sector, {:prompt => 'Property|Sector'} %>
   <%= submit_tag("Go to Sector") %>
 <% end %>
 <br>
-<%= form_tag("/admins_redir_from_dash", method: "post") do %>
+<%= form_tag("/admins_redir_from_dash", method: "get") do %>
   Unit:     <%= collection_select :unit, :unit_id, @units, :id, :prop_sect_unit, {:prompt => 'Property|Sector|Unit'} %>
   <%= submit_tag("Go to Unit") %>
 <% end %>
