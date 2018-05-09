@@ -1,3 +1,5 @@
+
+
 <h1><%= @tenant.fullname %>'s Home Page</h1>
 
 Email: <%= @tenant.email %><br>
@@ -6,4 +8,5 @@ Unit Number: <%= @tenant.unit_id %>
 
 <%= button_to "Edit", edit_tenant_path, method: "get" %> <br>
 
-<%= link_to "Back to Home", tenants_path %>
+<%= link_to "Back to Dashboard", tenant_dashboard_path %><br>
+<%= link_to "Back to Home Page", root_path %>

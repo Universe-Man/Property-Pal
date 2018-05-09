@@ -56,16 +56,37 @@ class AdminsController < ApplicationController
   end
 
   def dashboard
+    
+    #Admin MUST BE LOGGED IN for this to work
+    if session[:admin_id]
+      @admin = Admin.find(session[:admin_id])
+      @properties = Property.where(admin_id: @admin.id)
+      @sectors = @properties.map{|prop| prop.sectors}.flatten
+      @units = @sectors.map{|sect| sect.units}.flatten
+      @tenants = @units.map{|unit| unit.tenants}.flatten
+    else
+      flash[:error] = "You must be logged in to view the dashboard."
+      redirect_to login_path
+    end
+  end
 
-    #@admin = Admin.find(session[:admin_id]) or something like that
-    @properties = Property.all
-    @sectors = Sector.all
-    @units = Unit.all
-    @tenants = Tenant.all
+  def redir_from_dash
+    if params.include?(:unit)
+      @unit = Unit.find(params[:unit][:unit_id])
+      redirect_to unit_path(@unit)
+    elsif params.include?(:sector)
+      @sector = Sector.find(params[:sector][:sector_id])
+      redirect_to sector_path(@sector)
+    elsif params.include?(:property)
+      @property = Property.find(params[:property][:property_id])
+      redirect_to property_path(@property)
+    else
+      redirect_to admin_dashboard_path
+    end
   end
 
   def retrieve_info
-    byebug
+    #byebug
   end
 
   private

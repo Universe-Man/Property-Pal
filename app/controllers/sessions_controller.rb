@@ -8,11 +8,17 @@ class SessionsController < ApplicationController
     end
   end
 
+
+  num = 4
+  def factorial(num)
+    total = (1..num).to_a.inject(:*)
+    puts total
+  end
+
   def create
 
     @tenant = Tenant.find_by(email: params[:email])
     if params[:admin] == "1"
-
       @admin = Admin.find_by(email: params[:email])
       if @admin && @admin.authenticate(params[:password])
         session[:admin_id] = @admin.id
@@ -28,10 +34,13 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:admin_id] = nil
-    # session.delete(:user_id)
-
-    redirect_to root_path
+    if !session[:admin_id].nil?
+      session[:admin_id] = nil
+      redirect_to root_path
+    elsif !session[:tenant_id].nil?
+      session[:tenant_id] = nil
+      redirect_to root_path
+    end
   end
 
   def user_params

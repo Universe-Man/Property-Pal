@@ -3,14 +3,12 @@ class Sector < ApplicationRecord
   has_many :units
   has_many :tenants, through: :units
   validates :name, presence: true
-
   validates :property_id, presence: true
-  # validates :unit_id, uniqueness: true
 
   # validates :unit_id, presence: true
 
-  def sector_and_prop
-    if !self.property.name.nil?
+  def prop_and_sector
+    if !self.property.nil?
       self.property.name + " | " + self.name
     else
       self.name
