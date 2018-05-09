@@ -11,6 +11,20 @@ body{
     background-size: 100%, 100%;
     // opacity: 0.5;
 }
+#welcome_div{
+  margin-top: 20px;
+  border-radius: 20px;
+  border-style: solid;
+  background-color: white;
+
+}
+
+#welcome {
+  border-radius: 2px;
+  border: auto;
+  font-size: 54px;
+  text-align:center;
+}
 
 #login-dp{
     min-width: 250px;
