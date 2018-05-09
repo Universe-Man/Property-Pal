@@ -3,11 +3,13 @@ class SessionsController < ApplicationController
   def new
     if admin_logged_in?
       redirect_to admin_dashboard_path
+    elsif tenant_logged_in?
+      redirect_to tenant_dashboard_path
     end
   end
 
   def create
-    
+
     @tenant = Tenant.find_by(email: params[:email])
     if params[:admin] == "1"
 

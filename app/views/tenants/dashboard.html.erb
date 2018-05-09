@@ -1,8 +1,8 @@
 <%= button_to 'Home', "/", method: :get %>
 <br><br>
-"Welcome TENENT!" 
+"Welcome TENANT!"
 <br><br>
-<% if admin_logged_in? %>
+<% if tenant_logged_in? %>
   <%= button_to "Log out", logout_path %>
 <% else %>
   <%= button_to "Log in", login_path, method: :get %>
