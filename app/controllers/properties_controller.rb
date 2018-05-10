@@ -7,10 +7,20 @@ class PropertiesController < ApplicationController
   end
 
   def show
+    if !session[:tenant_id].nil?
+      @tenant = Tenant.find(session[:tenant_id])
+    elsif !session[:admin_id].nil?
+      @admin = Admin.find(session[:admin_id])
+    end
     @sectors = Sector.where(property_id: params[:id])
   end
 
   def index
+    if !session[:tenant_id].nil?
+      @tenant = Tenant.find(session[:tenant_id])
+    elsif !session[:admin_id].nil?
+      @admin = Admin.find(session[:admin_id])
+    end
     @properties = Property.all.sort_by{|p| p.name}
   end
 

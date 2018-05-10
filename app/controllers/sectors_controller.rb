@@ -15,10 +15,20 @@ class SectorsController < ApplicationController
   end
 
   def show
+    if !session[:tenant_id].nil?
+      @tenant = Tenant.find(session[:tenant_id])
+    elsif !session[:admin_id].nil?
+      @admin = Admin.find(session[:admin_id])
+    end
     @units = Unit.where(sector_id: params[:id])
   end
 
   def index
+    if !session[:tenant_id].nil?
+      @tenant = Tenant.find(session[:tenant_id])
+    elsif !session[:admin_id].nil?
+      @admin = Admin.find(session[:admin_id])
+    end
     @sectors = Sector.all.group_by{|sector| sector.property.name}.sort_by{|prop_name, sector| prop_name}
     #byebug
     #.sort{|a,b| a[]}
