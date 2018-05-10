@@ -1,3 +1,9 @@
+
+def gchart
+  Gchart.pie(:data => Unit.all, :title => Vacancy, :size => '400x200')
+end
+
+
 class AdminsController < ApplicationController
 
   before_action :fetch_admin, only: [:show, :edit, :update, :destroy]

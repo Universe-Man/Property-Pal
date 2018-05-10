@@ -10,17 +10,21 @@ class SessionsController < ApplicationController
 
   def create
     @tenant = Tenant.find_by(email: params[:email])
+<<<<<<< HEAD
     is_admin= params[:admin]
+=======
+>>>>>>> 230c9e262de336fe911117558e97accad21810c1
     if params[:admin] == "1" && @tenant.nil?
       @admin = Admin.find_by(email: params[:email])
       if @admin && @admin.authenticate(params[:password])
         session[:admin_id] = @admin.id
         redirect_to admin_dashboard_path
       end
-
+      
     elsif @tenant && @tenant.authenticate(params[:password])
       if params[:admin] == "1"
         flash[:errors] = "You do not have Admin access"
+        redirect_to login_path
       else
         session[:tenant_id] = @tenant.id
         redirect_to tenant_dashboard_path
