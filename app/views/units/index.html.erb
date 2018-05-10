@@ -1,3 +1,4 @@
+<%= render '/partials/admin_navigation' %>
 <h1> Units </h1>
   <% @sectors.each do |prop_name, sector_arr| %>
     <% if Property.where(name: prop_name).any? %>

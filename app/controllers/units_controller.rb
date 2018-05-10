@@ -5,11 +5,21 @@ class UnitsController < ApplicationController
   end
 
   def show
+    if !session[:tenant_id].nil?
+      @tenant = Tenant.find(session[:tenant_id])
+    elsif !session[:admin_id].nil?
+      @admin = Admin.find(session[:admin_id])
+    end
     @unit = Unit.find(params[:id])
     @tenants = Tenant.where(unit_id: params[:id])
   end
 
   def index
+    if !session[:tenant_id].nil?
+      @tenant = Tenant.find(session[:tenant_id])
+    elsif !session[:admin_id].nil?
+      @admin = Admin.find(session[:admin_id])
+    end
     @sectors = Sector.all.group_by{|sector| sector.property.name}
     @units = Unit.all.group_by{|unit| unit.sector.name}
     #@units = Unit.all.sort{|a,b| [a.sector.property.name, a.sector.name, a.name] <=> [b.sector.property.name, b.sector.name, b.name]}
