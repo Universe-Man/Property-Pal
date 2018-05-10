@@ -1,11 +1,11 @@
 class UnitsController < ApplicationController
+before_action :fetch_unit, only: [:update, :edit, :show, :destroy]
 
   def new
     @unit = Unit.new
   end
 
   def show
-    @unit = Unit.find(params[:id])
     @tenants = Tenant.where(unit_id: params[:id])
   end
 
@@ -16,7 +16,6 @@ class UnitsController < ApplicationController
   end
 
   def edit
-    @unit = Unit.find(params[:id])
   end
 
   def create
@@ -49,6 +48,10 @@ class UnitsController < ApplicationController
 
   def unit_params
     params.require(:unit).permit(:name, :sector_id)
+  end
+
+  def fetch_unit
+    @unit = Unit.find(params[:id])
   end
 
 end
