@@ -1,1 +1,11 @@
-<h1>Bonjour le Monde</h1>
+<h1>Edit a Unit</h1>
+
+<% if flash[:errors] %>
+  <div style="text-align:center;"class="errors"><h2><% flash[:errors].each do |er| %>
+    <%= er %></h2></div>
+    <% end %>
+<% end %>
+
+<%= render 'form' %>
+<br><br>
+<%= button_to "Delete Unit", @unit, method: "delete"%>
