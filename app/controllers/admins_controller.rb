@@ -65,8 +65,9 @@ class AdminsController < ApplicationController
       @sectors = @properties.map{|prop| prop.sectors}.flatten
       @units = @sectors.map{|sect| sect.units}.flatten
       @tenants = @units.map{|unit| unit.tenants}.flatten
-      @empty_units = @units.select{|unit| unit.tenants.nil?}
-      @full_units = @units.select{|unit| unit.tenants.any?}
+      @empty_units = Unit.all.select{|unit| unit.tenants.empty?}
+      @full_units = Unit.all.select{|unit| unit.tenants.any?}
+      @legend = ['Vacant', 'Occupied']
     else
       flash[:error] = "You must be logged in to view the dashboard."
       redirect_to login_path
