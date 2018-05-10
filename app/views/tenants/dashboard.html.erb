@@ -3,7 +3,15 @@
 <h1> Welcome <%= @tenant.first_name %> </h1>
 
 <br><br>
-<h1>Property info: </h1>
+<h3>Property info: </h3>
+<ul>
+    <li><%= link_to @tenant.property.name, @tenant.property %></li>
+</ul>
+<h3>Sector/Unit info</h3>
+<ul>
+    <li>Sector: <%= link_to @tenant.sector.name, @tenant.sector %></li>
+    <li>Unit: <%= link_to @tenant.unit.name, @tenant.unit %></li>
+</ul>
 <h3>Message board/ bulletin</h3>
 <br><br>
-<h2>Sector/Unit info</h2>
+

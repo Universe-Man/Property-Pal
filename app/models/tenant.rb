@@ -9,4 +9,16 @@ class Tenant < ApplicationRecord
   def fullname
     self.first_name + " " + self.last_name
   end
+
+  def unit
+    Unit.try(:find, self.unit_id)
+  end
+
+  def sector
+      Sector.try(:find, self.unit.sector_id)
+  end
+
+  def property
+    Property.try(:find, self.unit.sector.property_id)
+  end
 end

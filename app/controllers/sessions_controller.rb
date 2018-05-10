@@ -10,10 +10,6 @@ class SessionsController < ApplicationController
 
   def create
     @tenant = Tenant.find_by(email: params[:email])
-<<<<<<< HEAD
-    is_admin= params[:admin]
-=======
->>>>>>> 230c9e262de336fe911117558e97accad21810c1
     if params[:admin] == "1" && @tenant.nil?
       @admin = Admin.find_by(email: params[:email])
       if @admin && @admin.authenticate(params[:password])
