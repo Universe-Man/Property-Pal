@@ -7,13 +7,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand navbar-nav" href="<%= admin_dashboard_path %>">(a_a)</a>
+      <a class="navbar-brand navbar-nav" href="<%= admin_dashboard_path %>">Prop Pal (a_a)</a>
       </div>
 
       <div class="collapse navbar-collapse" id="myNavbar">
 
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
+          <li class="active"><a href="#">Dashboard</a></li>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -31,9 +31,11 @@
         <li><a href="<%= admin_path(@admin) %>"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
         <li>
           <% if admin_logged_in? %>
-          <a href="<%= logout_path %>"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
+
+            <a href="<%= logout_path %>"><span class="glyphicon glyphicon-log-out"></span> Logout </a>
+
           <% else %>
-          <a href="<%= logout_path %>"><span class="glyphicon glyphicon-log-in"></span>Login</a>
+            <a href="<%= login_path %>"><span class="glyphicon glyphicon-log-in"></span> Login1 </a>
           <% end %></li>
       </ul>
     </div>
