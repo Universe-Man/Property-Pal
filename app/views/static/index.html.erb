@@ -1,7 +1,14 @@
 <%= render "/partials/navigation" %>
 <br>
 
-<div id="welcome_div"> <h1 id="welcome" class=" ">Welcome to Property Pal!</h1>
+<div id="welcome_div">
+  <% if tenant_logged_in? %>
+      <h1 id="welcome" class=" ">Welcome back <%= @tenant.fullname %>!</h1>
+    <% elsif admin_logged_in? %>
+      <h1 id="welcome" class=" ">Welcome back <%= @admin.fullname %>!</h1>
+      <% else %>
+    <h1 id="welcome" class=" ">Welcome to Property Pal!</h1>
+    <% end %>
 </div>
 <br>
 <% if flash[:notice] %>
