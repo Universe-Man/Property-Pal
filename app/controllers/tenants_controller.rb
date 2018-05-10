@@ -47,7 +47,7 @@ class TenantsController < ApplicationController
       redirect_to @tenant
       flash[:notice] = "Account Updated"
     else
-      flash[:errors] = "Account must include a first and last name, email, and password."#@tenant.errors.full_messages
+      flash[:errors] = @tenant.errors.full_messages #"Account must include a first and last name, email, and password."
       redirect_to edit_tenant_path(@tenant)
     end
   end

@@ -30,8 +30,9 @@ class UnitsController < ApplicationController
   end
 
   def update
-    @unit = Unit.update(unit_params)
+    @unit.update(unit_params)
     if @unit.valid?
+      flash[:notice] = "Account Updated"
       redirect_to @unit
     else
       flash[:errors] = @unit.errors.full_messages
@@ -47,7 +48,7 @@ class UnitsController < ApplicationController
   private
 
   def unit_params
-    params.require(:unit).permit(:name, :tenant_id)
+    params.require(:unit).permit(:name, :sector_id)
   end
 
 end
