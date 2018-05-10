@@ -1,8 +1,12 @@
 <h1>All Sectors</h1>
-<ul>
-<% @sectors.each do |sector| %>
-  <% if !sector.property_id.nil? %>
-    <li><%= link_to sector.name, sector %></li>
+
+<% @sectors.each do |prop_name, sector_arr| %>
+  <% if Property.where(name: prop_name).any? %>
+    <h5><%= link_to prop_name, Property.where(name: prop_name).first %></h5>
+    <ul>
+      <%sector_arr.each do |s|%>
+      <li><%= link_to s.name, s %></li>
+      <%end%>
+    </ul>
   <% end %>
 <% end %>
-</ul>

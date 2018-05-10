@@ -1,8 +1,6 @@
-
-
+<h1> Units </h1>
+<ul>
 <% @units.each do |u| %>
-<% if u.sector_id ==  %>
-<% @units.each do |unit| %>
-  <% if unit.sector_id == @sector.id %>
-<%= link_to unit.name, unit %>
-<% end %>
+  <li><%= link_to u.sector.property.name, u.sector.property %> | <%= link_to u.sector.name, u.sector %> | <%= link_to u.name, u%></li>
+<%end%>
+</ul>

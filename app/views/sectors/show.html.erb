@@ -9,4 +9,6 @@
 <% end %>
 </ul>
 
-<%= link_to "Edit Sector", edit_sector_path%>
+<%if session[:admin_id]%>
+  <%= link_to "Edit Sector", edit_sector_path%>
+<%end%>
