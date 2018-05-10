@@ -68,21 +68,36 @@ class AdminsController < ApplicationController
       @empty_units = @units.select{|unit| unit.tenants.nil?}
       @full_units = @units.select{|unit| unit.tenants.any?}
     else
-      flash[:error] = "You must be logged in to view the dashboard."
+      flash[:errors] = "You must be logged in to view the dashboard."
       redirect_to login_path
     end
   end
 
   def redir_from_dash
     if params.include?(:unit)
-      @unit = Unit.find(params[:unit][:unit_id])
-      redirect_to unit_path(@unit)
+      if params[:unit][:unit_id] == ""
+        flash[:errors] = "Please select a Unit."
+        redirect_to admin_dashboard_path
+      else
+        @unit = Unit.find(params[:unit][:unit_id])
+        redirect_to unit_path(@unit)
+      end
     elsif params.include?(:sector)
-      @sector = Sector.find(params[:sector][:sector_id])
-      redirect_to sector_path(@sector)
+      if params[:sector][:sector_id] == ""
+        flash[:errors] = "Please select a Sector."
+        redirect_to admin_dashboard_path
+      else
+        @sector = Sector.find(params[:sector][:sector_id])
+        redirect_to sector_path(@sector)
+      end
     elsif params.include?(:property)
+      if params[:property][:property_id] == ""
+        flash[:errors] = "Please select a Property."
+        redirect_to admin_dashboard_path
+      else
       @property = Property.find(params[:property][:property_id])
       redirect_to property_path(@property)
+      end
     else
       redirect_to admin_dashboard_path
     end

@@ -1,3 +1,7 @@
 <%= render "/partials/navigation" %>
 
+<% if flash[:errors] %>
+  <div style="text-align:center;"class="errors"><h2><%= flash[:errors] %></h2></div>
+<% end %>
+
 <%= render "/partials/login_form" %>
