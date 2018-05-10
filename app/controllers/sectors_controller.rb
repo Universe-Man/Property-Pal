@@ -19,11 +19,10 @@ class SectorsController < ApplicationController
   end
 
   def index
-
-    # @sectors = Sector.all.
-    # Property.all.map{|p| @sector["#{p.name}"] = }
-    @sectors = Sector.all.group_by{|sector| sector.property.name}
-    #.sort{|a,b| [a.property.name, a.name] <=> [b.property.name, b.name]}
+    @sectors = Sector.all.group_by{|sector| sector.property.name}.sort_by{|prop_name, sector| prop_name}
+    #byebug
+    #.sort{|a,b| a[]}
+    #.sort_by{|prop_name, sector| prop_name}
   end
 
   def edit
