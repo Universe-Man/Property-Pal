@@ -33,8 +33,10 @@ class TenantsController < ApplicationController
   def index
     @sectors = Sector.all.group_by{|sector| sector.property.name}
     @units = Unit.all.group_by{|unit| unit.sector.name}
-    @tenants = Tenant.all.group_by{|tenant| tenant.unit}
-    byebug
+    @tenants = Tenant.all.select{|tenant| tenant.verify_unit}
+    @unassigned_tenants = Tenant.all - @tenants
+
+    #.group_by{|tenant| tenant.unit}
   end
 
   def edit

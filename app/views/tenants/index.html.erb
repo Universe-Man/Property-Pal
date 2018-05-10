@@ -1,9 +1,6 @@
 <h1>All Tenants</h1>
-<ul>
-<% @tenants.each do |tenant| %>
-<li><%= link_to tenant.fullname, tenant %></li>
-<% end %>
-</ul>
+<br>
+
 
   <% @sectors.each do |prop_name, sector_arr| %>
     <% if Property.where(name: prop_name).any? %>
@@ -15,8 +12,12 @@
           <ul>
             <%units = sector.units%>
             <%units.each do |unit|%>
-              <li>Unit: <%=link_to unit.name, unit%></li>
-                <%@tenants%>
+              <h5>Unit: <%=link_to unit.name, unit%></h5>
+                <ul>
+                <% unit.tenants.each do |tenant| %>
+                  <li><%= link_to tenant.fullname, tenant %></li>
+                <% end %>
+                </ul>
             <%end%>
           </ul>
         <% end %>
@@ -24,3 +25,10 @@
       </ul>
     <%end%>
   <%end%>
+  <br><br>
+  <h5>Tenants Without Units</h5>
+    <ul>
+      <%@unassigned_tenants.map do |tenant|%>
+        <li><%= link_to tenant.fullname, tenant%> </li>
+      <%end%>
+    </ul>
