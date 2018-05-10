@@ -1,3 +1,9 @@
+<% require 'gchart'
+%>
 <h1> New Property Form </h1>
 
 <%= render "form" %>
+
+
+
+<img src="<%=Gchart.pie(:data => [@empty_units.length, @full_units.length])%>"/>
