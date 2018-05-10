@@ -25,6 +25,7 @@ class TenantsController < ApplicationController
   def dashboard
     if tenant_logged_in?
       @tenant = Tenant.find(session[:tenant_id])
+      
     else flash[:error] = "You must be logged in to view the dashboard"
       redirect_to login_path
     end

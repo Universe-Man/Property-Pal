@@ -1,4 +1,4 @@
-<%= render "/partials/navigation" %>
+<%= render "tenant_navigation" %>
 
 <h1> Edit your profile </h1>
 
@@ -7,5 +7,5 @@
 <% end %>
 
 <%= render 'form' %>
-
+<br><br>
 <%= button_to "Delete account", @tenant, method: "delete"%>

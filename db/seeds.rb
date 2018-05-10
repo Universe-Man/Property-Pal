@@ -40,6 +40,12 @@ end
   end
 end
 
+2.times do
+  24.times do |i|
+    Tenant.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password(8), hint_password: "hi there", contract_id: rand(1..16), unit_id: i+1)
+  end
+end
+
 
 Unit.create(name: Faker::Number.between(1, 100), sector_id: 1)
 Unit.create(name: Faker::Number.between(1, 100), sector_id: 2)
@@ -48,14 +54,6 @@ Unit.create(name: Faker::Number.between(1, 100), sector_id: 4)
 Unit.create(name: Faker::Number.between(1, 100), sector_id: 5)
 Unit.create(name: Faker::Number.between(1, 100), sector_id: 6)
 Unit.create(name: Faker::Number.between(1, 100), sector_id: 7)
-
-2.times do
-  24.times do |i|
-    Tenant.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password(8), hint_password: "hi there", contract_id: rand(1..16), unit_id: i+1)
-  end
-end
-
-
 
 
 # puts Tenant.create(first_name: "Ian", last_name: "Pollack", email: "ian@email.com", password: "password", hint_password: "self")

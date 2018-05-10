@@ -1,15 +1,15 @@
-
-
+<%= render "tenant_navigation" %>
+<br>
 <h1><%= @tenant.fullname %></h1>
 
 <% if flash[:notice] %>
   <div style="text-align:center;"class="notice"><h2><%= flash[:notice] %></h2></div>
   <% end %>
-
-Email: <%= @tenant.email %><br>
+<br>
+<h2>Email: <%= @tenant.email %><br></h2>
 Lease Number: <%= @tenant.contract_id %><br>
 Unit Number: <%= @tenant.unit_id %>
-
+<br>
 <%= button_to "Edit", edit_tenant_path, method: "get" %> <br>
 
 <%= link_to "Back to Dashboard", tenant_dashboard_path %><br>
