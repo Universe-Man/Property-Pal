@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   # get "/tenant_login", to: 'tenants#tenant_login'
   get "/login", to: "sessions#new", as: "login"
   post "/logout", to: 'sessions#destroy'
+  get "/logout", to: 'sessions#destroy'
 
   post "/sessions", to: "sessions#create", as: "sessions"
   # get "/dashboard", to: 'tenants#dashboard'

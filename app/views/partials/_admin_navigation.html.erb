@@ -7,33 +7,49 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand navbar-nav" href="<%= admin_dashboard_path %>">(a_a)</a>
+      <a class="navbar-brand navbar-nav" href="<%= admin_dashboard_path %>">Prop Pal (a_a)</a>
       </div>
 
       <div class="collapse navbar-collapse" id="myNavbar">
 
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
+          <li class="active"><a href="#">Dashboard</a></li>
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Properties <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="#">Page 1-1</a></li>
               <li><a href="#">Page 1-2</a></li>
               <li><a href="#">Page 1-3</a></li>
             </ul>
           </li>
-          <li><a href="#">Page 2</a></li>
-          <li><a href="#">Page 3</a></li>
-        </ul>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Contracts <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">New Lease</a></li>
+              <li><a href="#">Add Lessee</a></li>
+              <li><a href="#">Amend Lease</a></li>
+            </ul>
+          </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Applicants <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">New Application</a></li>
+                  <li><a href="#">Review Applicants</a></li>
+                  <li><a href="#">Other</a></li>
+                </ul>
+              </li>
+            </ul>
 
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+        <li><a href="<%= admin_path(@admin) %>"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
         <li>
           <% if admin_logged_in? %>
-          <a href="<%= logout_path %>"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
+
+            <a href="<%= logout_path %>"><span class="glyphicon glyphicon-log-out"></span> Logout </a>
+
           <% else %>
-          <a href="<%= logout_path %>"><span class="glyphicon glyphicon-log-in"></span>Login</a>
+            <a href="<%= login_path %>"><span class="glyphicon glyphicon-log-in"></span> Login1 </a>
           <% end %></li>
       </ul>
     </div>

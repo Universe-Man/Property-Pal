@@ -1,13 +1,13 @@
 <%= render "/partials/admin_navigation" %>
 <br><br>
-<h1><%= "Welcome #{@admin.fullname}" %></h1>
+<h1><%= "Welcome, #{@admin.fullname}" %></h1>
 
 <br>
 <h2>Email: <%= @admin.email%></h2>
- <br>
+<br>
 
 <%= button_to "Edit", edit_admin_path, method: "get"%>
-
+<br><br>
 <% @admin.properties.each do |property| %>
 <%= link_to property.name, property %>
 <% end %>
