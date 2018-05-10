@@ -1,11 +1,5 @@
+<%= render "tenant_navigation" %>
+<br><br><br>
+<h1> Welcome <%= @tenant.first_name %> </h1>
 
-<%= button_to 'Home', "/", method: :get %>
 <br><br>
-"Welcome TENANT!"
-<%= @tenant.first_name %>
-<br><br>
-<% if tenant_logged_in? %>
-  <%= button_to "Log out", logout_path %>
-<% else %>
-  <%= button_to "Log in", login_path, method: :get %>
-<% end %>
