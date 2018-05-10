@@ -15,7 +15,7 @@
       <ul class="nav navbar-nav">
 
             <% if tenant_logged_in? %>
-              <li><a href="<%= tenants_dashboard %>"></a></li>
+              <li><a href="<%= tenant_dashboard_url %>"></a></li>
             <% elsif admin_logged_in? %>
               <a href="<%= admin_dashboard_url %>"></a></li>
             <% else %>
@@ -38,7 +38,7 @@
 
         <ul class="nav navbar-nav navbar-right">
             <% if tenant_logged_in? %>
-            <li class="active">  <a href="<%= tenants_dashboard %>">Dashboard</a> </li>
+            <li class="active">  <a href="<%= tenant_dashboard_url %>">Dashboard</a> </li>
             <% elsif admin_logged_in? %>
             <li class="active">  <a href="<%= admin_dashboard_url %>">Dashboard</a> </li>
             <% else %>
@@ -48,10 +48,13 @@
               Login</a></li>
             <% end  %>
           <li>
-            <a href="<%= new_tenant_path %>">
-              <span class="glyphicon glyphicon-user"></span>
-              Sign-Up
-            </a>
+            <% if tenant_logged_in? ||  admin_logged_in?%>
+              <a href="<%= logout_path %>"><span class="glyphicon glyphicon-log-out"></span> Logout </a>
+              <% else %>
+              <a href="<%= new_tenant_path %>">
+                <span class="glyphicon glyphicon-user"></span>
+                Sign-Up</a>
+                <% end %>
           </li>
         </ul>
       </div>
