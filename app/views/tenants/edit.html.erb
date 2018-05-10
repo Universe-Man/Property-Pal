@@ -3,9 +3,10 @@
 <h1> Edit your profile </h1>
 
 <% if flash[:errors] %>
-  <div style="text-align:center;"class="errors"><h2><%= flash[:errors] %></h2></div>
+  <div style="text-align:center;"class="errors"><h2><% flash[:errors].each do |er| %>
+    <%= er %></h2></div>
+    <% end %>
 <% end %>
 
 <%= render 'form' %>
 <br><br>
-<%= button_to "Delete account", @tenant, method: "delete"%>
