@@ -9,5 +9,5 @@
 <%= button_to "Edit", edit_admin_path, method: "get"%>
 <br><br>
 <% @admin.properties.each do |property| %>
-<%= link_to property.name, property %>
+<h3><%= link_to property.name, property %></h3>
 <% end %>
