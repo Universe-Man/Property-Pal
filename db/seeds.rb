@@ -14,8 +14,14 @@ Tenant.destroy_all
 #     Faker::Address.street_address + ", "+ Faker::Address.city
 # end
 
-Tenant.create(first_name: "mike", last_name: "mike", email: "mike@mike.com", password: "123", hint_password: "hi there", contract_id: rand(1..16), unit_id: 1)
-Tenant.create(first_name: "Rog", last_name: "tenant", email: "tenant@gmail.com", password: "111", hint_password: "hi there", contract_id: rand(1..16), unit_id: 1)
+# Tenant.create(first_name: "nil", last_name: "nil", email: "niltenant@gmail.com", password: "nil", hint_password: "nil", contract_id: 1, unit_id: 1)
+# Unit.create(name: "Unit has not been assigned", sector_id: 1)
+# Sector.create(name: "Sector has not been assigned", property_id: 1)
+# Property.create(name: "Tenant has not been assigned", admin_id: 1)
+# Admin.create(first_name: "nil", last_name: "nil", email: "niladmin@gmail.com", password: "nil", hint_password: "nil")
+
+Tenant.create(first_name: "mike", last_name: "mike", email: "mike@mike.com", password: "123", hint_password: "hi there", contract_id: rand(2..16), unit_id: 2)
+Tenant.create(first_name: "Rog", last_name: "tenant", email: "tenant@gmail.com", password: "111", hint_password: "hi there", contract_id: rand(2..16), unit_id: 2)
 Admin.create(first_name: "roger", last_name: "roger", email: "r@r.com", password: "111", hint_password: "hi there")
 Admin.create(first_name: "Roger", last_name: "Perez", email: "roger@gmail.com", password: "111", hint_password: "hi there")
 3.times do

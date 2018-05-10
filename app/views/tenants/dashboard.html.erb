@@ -3,15 +3,20 @@
 <h1> Welcome <%= @tenant.first_name %> </h1>
 
 <br><br>
-<h3>Property info: </h3>
-<ul>
-    <li><%=link_to @tenant.property.name, @tenant.property %></li>
-</ul>
-<h3>Sector/Unit info</h3>
-<ul>
-    <li>Sector: <%= link_to @tenant.sector.name, @tenant.sector %></li>
-    <li>Unit: <%= link_to @tenant.unit.name, @tenant.unit %></li>
-</ul>
+<%if @tenant.verify_unit%>
+    <h3>Property info: </h3>
+    <ul>
+        <li><%=link_to @tenant.property.name, @tenant.property %></li>
+    </ul>
+    <h3>Sector/Unit info</h3>
+    <ul>
+        <li>Sector: <%= link_to @tenant.sector.name, @tenant.sector %></li>
+        <li>Unit: <%= link_to @tenant.unit.name, @tenant.unit %></li>
+    </ul>
+<%else%>
+<h3>You have not moved into a Unit yet.</h3>
+<%end%>
+<br><br>
 <h3>Message board/ bulletin</h3>
 <br><br>
 
