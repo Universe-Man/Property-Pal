@@ -28,7 +28,7 @@
 
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+        <li><a href="<%= admin_path(@admin) %>"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
         <li>
           <% if admin_logged_in? %>
           <a href="<%= logout_path %>"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
