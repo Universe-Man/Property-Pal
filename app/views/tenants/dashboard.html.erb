@@ -7,19 +7,19 @@
 
   <%if @tenant.verify_unit%>
       <h3>Property info: </h3>
-      <ul>
+      <h4>
           <li><%=link_to @tenant.property.name, @tenant.property %></li>
-      </ul>
+      </h4>
       <h3>Sector/Unit info</h3>
-      <ul>
+      <h4>
           <li>Sector: <%= link_to @tenant.sector.name, @tenant.sector %></li>
           <li>Unit: <%= link_to @tenant.unit.name, @tenant.unit %></li>
-      </ul>
+      </h4>
   <%else%>
   <h3>You have not moved into a Unit yet.</h3>
   <%end%>
-
 </div>
+
 <div class= "col-md-6 col-sm-12">
   <h3>Message board/ bulletin</h3>
   <br>
