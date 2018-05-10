@@ -39,8 +39,6 @@ class TenantsController < ApplicationController
     @tenant = Tenant.find(params[:id])
   end
 
-
-
   def update
     @tenant.update(tenant_params)
     if @tenant.valid?

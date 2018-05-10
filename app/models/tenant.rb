@@ -10,15 +10,20 @@ class Tenant < ApplicationRecord
     self.first_name + " " + self.last_name
   end
 
-  def unit
-    Unit.try(:find, self.unit_id)
+  def verify_unit
+    if self.unit_id.nil?
+      self[:unit_id] = Unit.all.sample.id
+      save
+    end
   end
 
   def sector
-      Sector.try(:find, self.unit.sector_id)
+    self.verify_unit
+    Sector.try(:find, self.unit.sector_id)
   end
 
   def property
+    self.verify_unit
     Property.try(:find, self.unit.sector.property_id)
   end
 end
