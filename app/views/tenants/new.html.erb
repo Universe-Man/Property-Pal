@@ -3,7 +3,10 @@
 <h1> Create a new account </h1>
 
   <% if flash[:errors] %>
-    <div style="text-align:center;"class="errors"><h2><%= flash[:errors] %></h2></div>
+    <div style="text-align:center;"class="errors"><h2>
+      <% flash[:errors].each do |error| %>
+        <%= error %>
+      <% end %></h2></div>
   <% end %>
 
 <%= render 'form'%>

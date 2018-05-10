@@ -4,7 +4,7 @@ class Tenant < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :password_digest, presence: true
+  validates :password, presence: true
 
   def fullname
     self.first_name + " " + self.last_name

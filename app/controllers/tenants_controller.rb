@@ -10,14 +10,12 @@ class TenantsController < ApplicationController
       flash[:notice] = "Account Successfully Created"
       redirect_to login_path
     else
-      flash[:errors] = "Account must include a first and last name, email, and password."
+      flash[:errors] = @tenant.errors.full_messages#"Account must include a first and last name, email, and password; emails must be unique."
       redirect_to new_tenant_path
     end
   end
 
   def success
-    sleep 3
-    redirect_to login_path
   end
 
   def show
@@ -61,7 +59,7 @@ class TenantsController < ApplicationController
 
   private
   def tenant_params
-    params.require(:tenant).permit(:first_name, :last_name, :email, :password_digest, :hint_password) #, :address_id, :contract_id
+    params.require(:tenant).permit(:first_name, :last_name, :email, :password, :hint_password) #, :address_id, :contract_id
   end
 
   def fetch_tenant

@@ -6,7 +6,7 @@ class CreateTenants < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :password_digest
       t.string :hint_password
-      t.integer :contract_id
+      t.integer :contract_id, null: true
       t.integer :unit_id, null: true
 
       t.timestamps
