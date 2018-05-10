@@ -12,4 +12,8 @@ class Unit < ApplicationRecord
       self.name
     end
   end
+
+  def unit_admin
+    self.sector.property.admin
+  end
 end

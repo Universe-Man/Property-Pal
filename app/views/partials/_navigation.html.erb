@@ -1,37 +1,63 @@
 <nav class="navbar navbar-inverse navbar-fixed-top " role="navigation">
   <div class="container-fluid">
-      <div class="navbar-header">
+    <div class="navbar-header">
 
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand navbar-nav" href="<%= root_path %>">Property Pal</a>
-      </div>
+    </div>
 
-      <div class="collapse navbar-collapse" id="myNavbar">
+    <div class="collapse navbar-collapse" id="myNavbar">
 
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="<%= root_path %>">Home</a></li>
+      <ul class="nav navbar-nav">
+
+            <% if tenant_logged_in? %>
+              <li><a href="<%= tenant_dashboard_url %>"></a></li>
+            <% elsif admin_logged_in? %>
+              <a href="<%= admin_dashboard_url %>"></a></li>
+            <% else %>
+              <li class="active"><a href="<%= root_path %>">Home</a> </li>
+            <% end %>
+
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Property Listings <span class="caret"></span></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Property Listings
+              <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Page 1-1</a></li>
-              <li><a href="#">Page 1-2</a></li>
-              <li><a href="#">Page 1-3</a></li>
+              <li> <a href="#">Page 1-1</a></li>
+              <li> <a href="#">Page 1-2</a></li>
+              <li> <a href="#">Page 1-3</a> </li>
             </ul>
           </li>
+
           <li><a href="#">Contact</a></li>
           <li><a href="#">About Us</a></li>
         </ul>
 
-
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="<%= login_path %>"><span class="glyphicon glyphicon-log-in"></span> Login </a></li>
-        <li><a href="<%= new_tenant_path %>"><span class="glyphicon glyphicon-user"></span> Sign-Up </a></li>
-      </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <% if tenant_logged_in? %>
+            <li class="active">  <a href="<%= tenant_dashboard_url %>">Dashboard</a> </li>
+            <% elsif admin_logged_in? %>
+            <li class="active">  <a href="<%= admin_dashboard_url %>">Dashboard</a> </li>
+            <% else %>
+            <li>
+            <a href="<%= login_path %>">
+              <span class="glyphicon glyphicon-log-in"></span>
+              Login</a></li>
+            <% end  %>
+          <li>
+            <% if tenant_logged_in? ||  admin_logged_in?%>
+              <a href="<%= logout_path %>"><span class="glyphicon glyphicon-log-out"></span> Logout </a>
+              <% else %>
+              <a href="<%= new_tenant_path %>">
+                <span class="glyphicon glyphicon-user"></span>
+                Sign-Up</a>
+                <% end %>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
 
-</nav>
+  </nav>

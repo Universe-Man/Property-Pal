@@ -10,7 +10,9 @@ class UnitsController < ApplicationController
   end
 
   def index
-    @units = Unit.all
+    @sectors = Sector.all.group_by{|sector| sector.property.name}
+    @units = Unit.all.group_by{|unit| unit.sector.name}
+    #@units = Unit.all.sort{|a,b| [a.sector.property.name, a.sector.name, a.name] <=> [b.sector.property.name, b.sector.name, b.name]}
   end
 
   def edit

@@ -6,3 +6,7 @@
 <p><% @tenants.map do |t| %> </p>
   <%= t.fullname %>
 <% end %>
+
+<%if session[:admin_id]%>
+  <%= link_to "Edit Unit", @unit%>
+<%end%>

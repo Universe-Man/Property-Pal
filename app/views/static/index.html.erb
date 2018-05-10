@@ -1,9 +1,25 @@
 <%= render "/partials/navigation" %>
 <br>
-
-<div id="welcome_div"> <h1 id="welcome" class=" ">Welcome to Property Pal!</h1>
+<div id="intro_welcome">
+  <div id="welcome_div">
+  <% if tenant_logged_in? %>
+      <h1 id="welcome" class=" ">Welcome back <%= @tenant.fullname %>!</h1>
+    <% elsif admin_logged_in? %>
+      <h1 id="welcome" class=" ">Welcome back <%= @admin.fullname %>!</h1>
+      <% else %>
+    <h1 id="welcome" class=" ">Welcome to Property Pal!</h1>
+    <% end %>
 </div>
 <br>
 <% if flash[:notice] %>
   <div style="text-align:center;"class="notice"><h2><%= flash[:notice] %></h2></div>
   <% end %>
+</div>
+
+<div id="" class="container no-padding">
+      <div class="col-md-12 col-lg-12">
+        <img src="http://media.equityapartments.com/images/q_50/f_auto/fl_lossy/4206-28/the-kelvin-apartments-exterior" alt="placeholder 960" class="img-responsive no-padding" />
+      </div>
+
+
+</div>

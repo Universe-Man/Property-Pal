@@ -11,5 +11,6 @@
 <%end%>
 </ul>
 
-
-<%= link_to 'Edit property', edit_property_path(@property) %>
+<%if session[:admin_id]%>
+    <%= link_to 'Edit property', edit_property_path(@property) %>
+<%end%>

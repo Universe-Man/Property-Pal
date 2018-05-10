@@ -11,7 +11,7 @@ class PropertiesController < ApplicationController
   end
 
   def index
-    @properties = Property.all
+    @properties = Property.all.sort_by{|p| p.name}
   end
 
   def edit
