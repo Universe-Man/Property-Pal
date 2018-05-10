@@ -8,25 +8,31 @@
   <% end %>
 
 <br><br>
+<div class="col-md-6 col-sm-12 col-lg-6 col-xs-12">
 
-<h4>Take me to: </h4>
-<%= form_tag("/admins_redir_from_dash", method: "get") do %>
-  Select Property: <%= collection_select :property, :property_id, @properties, :id, :name, {:prompt => 'Property'} %>
-  <%= submit_tag("Go to Property") %>
-<% end %>
-<br>
-<%= form_tag("/admins_redir_from_dash", method: "get") do %>
-  Select Sector:   <%= collection_select :sector, :sector_id, @sectors, :id, :prop_and_sector, {:prompt => 'Property|Sector'} %>
-  <%= submit_tag("Go to Sector") %>
-<% end %>
-<br>
-<%= form_tag("/admins_redir_from_dash", method: "get") do %>
-  Select Unit:     <%= collection_select :unit, :unit_id, @units, :id, :prop_sect_unit, {:prompt => 'Property|Sector|Unit'} %>
-  <%= submit_tag("Go to Unit") %>
-<% end %>
+  <img id="pie" src="<%=Gchart.pie(:data => [@empty_units.length, @full_units.length], :size => '250x300', :title => 'Current vacancies', :legend => @legend)%>" align="left"/>
 
 
-<img id="pie" src="<%=Gchart.pie(:data => [@empty_units.length, @full_units.length], :size => '250x300', :title => 'Current vacancies', :legend => @legend)%>" align="left"/>
+</div>
+<div class="col-sm-12 col-md-6 col-xs-12 col-lg-6">
+
+  <h4>Take me to: </h4>
+  <%= form_tag("/admins_redir_from_dash", method: "get") do %>
+    Select Property: <%= collection_select :property, :property_id, @properties, :id, :name, {:prompt => 'Property'} %>
+    <%= submit_tag("Go to Property") %>
+  <% end %>
+  <br>
+  <%= form_tag("/admins_redir_from_dash", method: "get") do %>
+    Select Sector:   <%= collection_select :sector, :sector_id, @sectors, :id, :prop_and_sector, {:prompt => 'Property|Sector'} %>
+    <%= submit_tag("Go to Sector") %>
+  <% end %>
+  <br>
+  <%= form_tag("/admins_redir_from_dash", method: "get") do %>
+    Select Unit:     <%= collection_select :unit, :unit_id, @units, :id, :prop_sect_unit, {:prompt => 'Property|Sector|Unit'} %>
+    <%= submit_tag("Go to Unit") %>
+  <% end %>
+</div>
+
 
 
 <% link_to 'Show Property', @property  %>
