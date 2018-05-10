@@ -1,4 +1,8 @@
 <!-- #navigation partial is within admins directory -->
+
+<% require 'gchart'
+%>
+
 <%= render "/partials/admin_navigation" %>
 
 <h1>"Welcome to the Dashboard <%=current_admin.fullname%>!"</h1>
@@ -23,3 +27,8 @@
   Unit:     <%= collection_select :unit, :unit_id, @units, :id, :prop_sect_unit, {:prompt => 'Property|Sector|Unit'} %>
   <%= submit_tag("Go to Unit") %>
 <% end %>
+
+
+<img src="<%=Gchart.pie(:data => [@empty_units, @full_units])%>"/>
+
+<% link_to 'Show Property', @property  %>

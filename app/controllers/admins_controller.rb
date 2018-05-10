@@ -1,7 +1,3 @@
-
-Gchart.pie(:data => Unit.all, :title => Vacancy, :size => '400x200')
-
-
 class AdminsController < ApplicationController
 
   before_action :fetch_admin, only: [:show, :edit, :update, :destroy]
@@ -67,6 +63,8 @@ class AdminsController < ApplicationController
       @sectors = @properties.map{|prop| prop.sectors}.flatten
       @units = @sectors.map{|sect| sect.units}.flatten
       @tenants = @units.map{|unit| unit.tenants}.flatten
+      @empty_units = @units.select{|unit| unit.tenants.nil?}
+      @full_units = @units.select{|unit| unit.tenants.any?}
     else
       flash[:error] = "You must be logged in to view the dashboard."
       redirect_to login_path
