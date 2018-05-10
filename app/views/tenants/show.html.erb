@@ -7,9 +7,7 @@
   <% end %>
 <br>
 <h2>Email: <%= @tenant.email %><br></h2>
-Lease Number: <%= @tenant.contract_id %><br>
-Unit Number: <%= @tenant.unit_id %>
-<br>
+<h3>Lease Number: <%= @tenant.contract_id %><br></h3>
+<h3>Unit Number: <%= @tenant.unit_id %></h3>
+<br><br>
 <%= button_to "Edit", edit_tenant_path, method: "get" %> <br>
-
-<%= link_to "Back to Dashboard", tenant_dashboard_path %><br>
