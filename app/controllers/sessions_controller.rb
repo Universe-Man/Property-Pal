@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
         session[:admin_id] = @admin.id
         redirect_to admin_dashboard_path
       end
-      
+
     elsif @tenant && @tenant.authenticate(params[:password])
       if params[:admin] == "1"
         flash[:errors] = "You do not have Admin access"
