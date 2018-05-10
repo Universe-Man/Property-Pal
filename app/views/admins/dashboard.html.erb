@@ -1,24 +1,27 @@
 <!-- #navigation partial is within admins directory -->
 <%= render "/partials/admin_navigation" %>
 <br>
-<h1>Welcome to the Dashboard <%=current_admin.fullname%>!</h1>
+<h1>Welcome to the Dashboard <%=current_admin.fullname%></h1>
 
+<% if flash[:errors] %>
+  <div style="text-align:center;"class="notice"><h2><%= flash[:errors] %></h2></div>
+  <% end %>
 
 <br><br><br><br>
 
 <h4>Take me to: </h4>
 <%= form_tag("/admins_redir_from_dash", method: "get") do %>
-  Property: <%= collection_select :property, :property_id, @properties, :id, :name, {:prompt => 'Property'} %>
+  Select Property: <%= collection_select :property, :property_id, @properties, :id, :name, {:prompt => 'Property'} %>
   <%= submit_tag("Go to Property") %>
 <% end %>
 <br>
 <%= form_tag("/admins_redir_from_dash", method: "get") do %>
-  Sector:   <%= collection_select :sector, :sector_id, @sectors, :id, :prop_and_sector, {:prompt => 'Property|Sector'} %>
+  Select Sector:   <%= collection_select :sector, :sector_id, @sectors, :id, :prop_and_sector, {:prompt => 'Property|Sector'} %>
   <%= submit_tag("Go to Sector") %>
 <% end %>
 <br>
 <%= form_tag("/admins_redir_from_dash", method: "get") do %>
-  Unit:     <%= collection_select :unit, :unit_id, @units, :id, :prop_sect_unit, {:prompt => 'Property|Sector|Unit'} %>
+  Select Unit:     <%= collection_select :unit, :unit_id, @units, :id, :prop_sect_unit, {:prompt => 'Property|Sector|Unit'} %>
   <%= submit_tag("Go to Unit") %>
 <% end %>
 
