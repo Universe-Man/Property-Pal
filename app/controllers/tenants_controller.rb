@@ -31,7 +31,10 @@ class TenantsController < ApplicationController
   end
 
   def index
-    @tenants = Tenant.all
+    @sectors = Sector.all.group_by{|sector| sector.property.name}
+    @units = Unit.all.group_by{|unit| unit.sector.name}
+    @tenants = Tenant.all.group_by{|tenant| tenant.unit}
+    byebug
   end
 
   def edit
@@ -44,7 +47,7 @@ class TenantsController < ApplicationController
       redirect_to @tenant
       flash[:notice] = "Account Updated"
     else
-      flash[:errors] = "Account must include a first and last name, email, and password."#@tenant.errors.full_messages
+      flash[:errors] = @tenant.errors.full_messages #"Account must include a first and last name, email, and password."
       redirect_to edit_tenant_path(@tenant)
     end
   end

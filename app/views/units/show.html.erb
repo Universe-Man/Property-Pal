@@ -1,5 +1,9 @@
 <h1>Unit: <%=@unit.name %> </h1>
 
+<% if flash[:notice] %>
+  <div style="text-align:center;"class="errors"><h2><%= flash[:notice] %></h2></div>
+<% end %>
+
 <img src= "http://invisionstudio.com/wp-content/uploads/2015/05/23-1.jpg" alt="Apartment Photo" width="440" height="300">
 
 <h3>Tenant(s): </h3>
@@ -8,5 +12,5 @@
 <% end %>
 
 <%if session[:admin_id]%>
-  <%= link_to "Edit Unit", @unit%>
+  <%= link_to "Edit Unit", edit_unit_path%>
 <%end%>
