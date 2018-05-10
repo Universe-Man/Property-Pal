@@ -1,7 +1,4 @@
-<!-- #navigation partial is within admins directory -->
 
-<% require 'gchart'
-%>
 
 <%= render "/partials/admin_navigation" %>
 
@@ -27,6 +24,5 @@
 <% end %>
 
 
-<img src="<%=Gchart.pie(:data => [@empty_units, @full_units])%>"/>
 
 <% link_to 'Show Property', @property  %>
