@@ -8,17 +8,21 @@
 
 <h1><%= @property.name %></h1>
 
+<% if flash[:notice] %>
+<div style="text-align:center;"class="errors"><h2><%= flash[:notice] %></h2></div>
+<% end %>
+
 <img src= "https://static.dezeen.com/uploads/2018/02/riverfront-square-michael-green-lotus-newark-new-jersey-usa-largest-timber-office-building_dezeen_2364_col_1-852x537.jpg" alt="Property Photo" width="440" height="300">
 
-<p>Admin(s): <%= @property.admin.fullname %></p><br>
+<h4>Admin(s): <%= @property.admin.fullname %></h4>
 
-<p>Sectors: </p>
+<h2>Sectors: </h2>
 <ul>
 <% @sectors.map do |sector|%>
-    <li><%= link_to sector.name, sector %></li>
+    <h4><li><%= link_to sector.name, sector %></li></h4>
 <%end%>
 </ul>
 
 <%if session[:admin_id]%>
-    <%= link_to 'Edit property', edit_property_path(@property) %>
+    <h4><%= link_to 'Edit property', edit_property_path(@property) %></h4>
 <%end%>

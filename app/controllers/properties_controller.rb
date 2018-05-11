@@ -31,6 +31,7 @@ class PropertiesController < ApplicationController
   def update
     @property.update(property_params)
     if @property.valid?
+      flash[:notice] = "Property Updated"
       redirect_to @property
     else
       flash[:errors] = @property.errors.full_messages
@@ -50,6 +51,7 @@ class PropertiesController < ApplicationController
 
   def destroy
     @property.destroy
+    flash[:notice] = "Property Deleted"
     redirect_to properties_path
   end
 
@@ -63,12 +65,12 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
   end
 
-  
+
   def verify_tenant_or_admin
     if !session[:tenant_id].nil?
       @tenant = Tenant.find(session[:tenant_id])
     elsif !session[:admin_id].nil?
       @admin = Admin.find(session[:admin_id])
-    end 
+    end
   end
 end

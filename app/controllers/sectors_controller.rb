@@ -1,7 +1,7 @@
 class SectorsController < ApplicationController
   before_action :verify_tenant_or_admin
   before_action :fetch_sector, only: [:edit, :update, :show, :destroy, :property]
-  
+
   def new
     @sector = Sector.new()
   end
@@ -45,6 +45,7 @@ class SectorsController < ApplicationController
   def update
     @sector.update(sector_params)
     if @sector.valid?
+      flash[:notice] = "Sector Updated"
       redirect_to @sector
     else
       flash[:errors] = @sector.errors.full_messages
@@ -54,6 +55,7 @@ class SectorsController < ApplicationController
 
   def destroy
     @sector.destroy
+    flash[:notice] = "Sector Deleted"
     redirect_to sectors_path
   end
 
@@ -67,12 +69,12 @@ class SectorsController < ApplicationController
     @sector = Sector.find(params[:id])
   end
 
-  
+
   def verify_tenant_or_admin
     if !session[:tenant_id].nil?
       @tenant = Tenant.find(session[:tenant_id])
     elsif !session[:admin_id].nil?
       @admin = Admin.find(session[:admin_id])
-    end 
+    end
   end
 end

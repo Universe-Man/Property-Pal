@@ -43,7 +43,7 @@ before_action :verify_tenant_or_admin
     @unit = Unit.find(params[:id])
     @unit.update(unit_params)
     if @unit.valid?
-      flash[:notice] = "Account Updated"
+      flash[:notice] = "Unit Updated"
       redirect_to @unit
     else
       flash[:errors] = @unit.errors.full_messages
@@ -68,13 +68,13 @@ before_action :verify_tenant_or_admin
     @unit = Unit.find(params[:id])
   end
 
-  
+
   def verify_tenant_or_admin
     if !session[:tenant_id].nil?
       @tenant = Tenant.find(session[:tenant_id])
     elsif !session[:admin_id].nil?
       @admin = Admin.find(session[:admin_id])
-    end 
+    end
   end
 
 end

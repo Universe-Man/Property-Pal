@@ -5,18 +5,18 @@
 <%else%>
     <%= render '/partials/navigation'%>
 <%end%>
-<h1> Units </h1>
+<h1>Units:</h1>
   <% @sectors.each do |prop_name, sector_arr| %>
     <% if Property.where(name: prop_name).any? %>
-      <h5>Property: <%= link_to prop_name, Property.where(name: prop_name).first %></h5>
+      <h3>Property: <%= link_to prop_name, Property.where(name: prop_name).first %></h3>
       <ul>
       <%sector_arr.each do |sector|%>
         <% if Sector.find(sector.id) %>
-          <h5>Sector: <%= link_to sector.name, sector %></h5>
+          <h3>Sector: <%= link_to sector.name, sector %></h3>
           <ul>
             <%units = sector.units%>
             <%units.each do |unit|%>
-              <li>Unit: <%=link_to unit.name, unit%></li>
+              <h4><li>Unit: <%=link_to unit.name, unit%></li></h4>
             <%end%>
           </ul>
         <% end %>
