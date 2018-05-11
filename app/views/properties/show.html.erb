@@ -1,4 +1,10 @@
-<%= render '/partials/admin_navigation' %>
+<%if @admin%>
+    <%= render '/partials/admin_navigation' %>
+<%elsif @tenant %>
+    <%= render '/tenants/tenant_navigation'%>
+<%else%>
+    <%= render '/partials/navigation'%>
+<%end%>
 
 <h1><%= @property.name %></h1>
 

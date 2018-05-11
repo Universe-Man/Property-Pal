@@ -1,2 +1,10 @@
+<%if @admin%>
+    <%= render '/partials/admin_navigation' %>
+<%elsif @tenant %>
+    <%= render '/tenants/tenant_navigation'%>
+<%else%>
+    <%= render '/partials/navigation'%>
+<%end%>
+
 <h1>Static#edit</h1>
 <p>Find me in app/views/static/edit.html.erb</p>

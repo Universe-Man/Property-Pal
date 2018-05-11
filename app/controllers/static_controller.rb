@@ -1,14 +1,9 @@
 class StaticController < ApplicationController
-  def index
-    #code
-    # verifies if tenant or admin has previously been to webpage.
-    if !session[:tenant_id].nil?
-      @tenant = Tenant.find(session[:tenant_id])
-    elsif !session[:admin_id].nil?
-      @admin = Admin.find(session[:admin_id])
-    end 
+  before_action :verify_tenant_or_admin
 
+  def index
   end
+
   def new
     @tenant = Tenant.new
   end
@@ -27,8 +22,16 @@ class StaticController < ApplicationController
 
   def destroy
   end
+    
 private
   def login_params
+  end
 
+  def verify_tenant_or_admin
+    if !session[:tenant_id].nil?
+      @tenant = Tenant.find(session[:tenant_id])
+    elsif !session[:admin_id].nil?
+      @admin = Admin.find(session[:admin_id])
+    end 
   end
 end

@@ -1,4 +1,10 @@
-<%= render "/partials/navigation" %>
+<%if @admin%>
+    <%= render '/partials/admin_navigation' %>
+<%elsif @tenant %>
+    <%= render '/tenants/tenant_navigation'%>
+<%else%>
+    <%= render '/partials/navigation'%>
+<%end%>
 
 <% if flash[:errors] %>
   <div style="text-align:center;"class="errors"><h2><%= flash[:errors] %></h2></div>

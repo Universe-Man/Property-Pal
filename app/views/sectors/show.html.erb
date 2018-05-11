@@ -1,4 +1,10 @@
-<%= render '/partials/admin_navigation' %>
+<%if @admin%>
+    <%= render '/partials/admin_navigation' %>
+<%elsif @tenant %>
+    <%= render '/tenants/tenant_navigation'%>
+<%else%>
+    <%= render '/partials/navigation'%>
+<%end%>
 <h1>Sector: <%= @sector.name %></h1>
 
 <img src= "https://www.themillions.com/wp-content/uploads/2015/07/SHINING_1.jpg" alt="Sector Photo (come and play with us Danny come and play with us forever and ever)" width="440" height="300">
