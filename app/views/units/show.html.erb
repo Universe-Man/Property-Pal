@@ -14,11 +14,11 @@
 <img src= "http://invisionstudio.com/wp-content/uploads/2015/05/23-1.jpg" alt="Apartment Photo" width="440" height="300">
 
 <% if !@tenants.nil? %>
-    <h2>Tenant(s): </h2>
-    <% @tenants.map do |t| %>
-      <h4><%= t.fullname %></h4>
-    <% end %>
     <%if session[:admin_id]%>
+    <h2>Tenant(s): </h2>
+      <% @tenants.map do |t| %>
+      <h4><%= t.fullname %></h4>
+      <% end %>
       <h4><%= link_to "Edit Unit", edit_unit_path%></h4>
     <%end%>
 <% end %>
