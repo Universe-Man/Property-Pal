@@ -8,6 +8,8 @@
 
 <%= button_to "Edit", edit_admin_path, method: "get"%>
 <br><br>
+
+<h2>Current Portfolio: </h2>
 <% @admin.properties.each do |property| %>
 <h3><%= link_to property.name, property %></h3>
 <% end %>

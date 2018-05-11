@@ -43,50 +43,6 @@ https://wallpaperbrowse.com/media/images/minimalist-bridge-wallpaper-background-
  }
 
 
-#intro_welcome{
-  height: 500px;
-
-}
-
- #welcome_div{
-   border-radius: 20px;
-   border-style: solid;
-   background-color: white;
-
- }
-
- #welcome {
-   border-radius: 2px;
-   border: auto;
-   margin-top: 10px;
-   font-size: 54px;
-   text-align:center;
- }
-
- .image-container{
-   height: 600px;
-   position: relative;
- }
-
- .image-container > img {
-   width: 100%;
-   height: 100%;
- }
- .no-padding{
-   padding-left: 0px;
-   padding-right: 0px;
-
- }
-
-#second{
-  height:650px;
-
-  background-size: cover;
-  background-repeat: no-repeat;
-
-}
-
-
 
  #login-dp{
      min-width: 250px;
