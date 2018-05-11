@@ -117,5 +117,4 @@ class AdminsController < ApplicationController
   def fetch_admin
     @admin = Admin.find(params[:id])
   end
-
 end

@@ -1,22 +1,32 @@
 class UnitsController < ApplicationController
+before_action :fetch_unit, only: [:update, :edit, :show, :destroy]
+before_action :verify_tenant_or_admin
 
   def new
     @unit = Unit.new
   end
 
   def show
+    if !session[:tenant_id].nil?
+      @tenant = Tenant.find(session[:tenant_id])
+    elsif !session[:admin_id].nil?
+      @admin = Admin.find(session[:admin_id])
+    end
     @unit = Unit.find(params[:id])
     @tenants = Tenant.where(unit_id: params[:id])
   end
 
   def index
+    if !session[:tenant_id].nil?
+      @tenant = Tenant.find(session[:tenant_id])
+    elsif !session[:admin_id].nil?
+      @admin = Admin.find(session[:admin_id])
+    end
     @sectors = Sector.all.group_by{|sector| sector.property.name}
     @units = Unit.all.group_by{|unit| unit.sector.name}
-    #@units = Unit.all.sort{|a,b| [a.sector.property.name, a.sector.name, a.name] <=> [b.sector.property.name, b.sector.name, b.name]}
   end
 
   def edit
-    @unit = Unit.find(params[:id])
   end
 
   def create
@@ -49,6 +59,19 @@ class UnitsController < ApplicationController
 
   def unit_params
     params.require(:unit).permit(:name, :sector_id)
+  end
+
+  def fetch_unit
+    @unit = Unit.find(params[:id])
+  end
+
+  
+  def verify_tenant_or_admin
+    if !session[:tenant_id].nil?
+      @tenant = Tenant.find(session[:tenant_id])
+    elsif !session[:admin_id].nil?
+      @admin = Admin.find(session[:admin_id])
+    end 
   end
 
 end

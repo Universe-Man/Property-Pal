@@ -1,4 +1,10 @@
-<%= render "/partials/navigation" %>
+<%if @admin%>
+    <%= render '/partials/admin_navigation' %>
+<%elsif @tenant %>
+    <%= render '/tenants/tenant_navigation'%>
+<%else%>
+    <%= render '/partials/navigation'%>
+<%end%>
 <br>
 <div id="intro_welcome">
   <div id="welcome_div">

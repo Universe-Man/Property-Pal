@@ -1,3 +1,10 @@
+<%if @admin%>
+    <%= render '/partials/admin_navigation' %>
+<%elsif @tenant %>
+    <%= render '/tenants/tenant_navigation'%>
+<%else%>
+    <%= render '/partials/navigation'%>
+<%end%>
 <h1>Edit a Unit</h1>
 
 <% if flash[:errors] %>
