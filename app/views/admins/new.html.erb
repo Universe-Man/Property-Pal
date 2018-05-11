@@ -1,4 +1,10 @@
-<%= render "/partials/admin_navigation" %>
+<%if admin_logged_in?%>
+    <%= render '/partials/admin_navigation' %>
+<%elsif tenant_logged_in? %>
+    <%= render '/tenants/tenant_navigation'%>
+<%else%>
+    <%= render '/partials/navigation'%>
+<%end%>
 
 <h1> Create new Admin account </h1>
 

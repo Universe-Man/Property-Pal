@@ -1,6 +1,6 @@
-<%if @admin%>
+<%if admin_logged_in?%>
     <%= render '/partials/admin_navigation' %>
-<%elsif @tenant %>
+<%elsif tenant_logged_in? %>
     <%= render '/tenants/tenant_navigation'%>
 <%else%>
     <%= render '/partials/navigation'%>
