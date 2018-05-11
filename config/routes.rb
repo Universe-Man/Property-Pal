@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/success', to: "tenants#success", as: "success"
   get '/properties/:id/sectors', to: 'sector#show'
   get '/sectors/:id/units', to: 'unit#show'
+  get '/about', to: 'static#about'
 
 
   # get "/tenant_login", to: 'tenants#tenant_login'
