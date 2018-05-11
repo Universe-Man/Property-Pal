@@ -7,15 +7,19 @@
 <%end%>
 <h1>Sector: <%= @sector.name %></h1>
 
+<% if flash[:notice] %>
+<div style="text-align:center;"class="errors"><h2><%= flash[:notice] %></h2></div>
+<% end %>
+
 <img src= "https://www.themillions.com/wp-content/uploads/2015/07/SHINING_1.jpg" alt="Sector Photo (come and play with us Danny come and play with us forever and ever)" width="440" height="300">
 
-<p>Units: </p>
+<h2>Units:</h2>
 <ul>
 <% @units.map do |u| %></p>
-  <li><%= link_to u.name, u %></li>
+  <h4><li><%= link_to u.name, u %></li></h4>
 <% end %>
 </ul>
 
 <%if session[:admin_id]%>
-  <%= link_to "Edit Sector", edit_sector_path%>
+  <h4><%= link_to "Edit Sector", edit_sector_path%></h4>
 <%end%>

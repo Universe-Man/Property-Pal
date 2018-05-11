@@ -7,8 +7,12 @@
 <%end%>
 <h1>Properties:</h1>
 
+<% if flash[:notice] %>
+<div style="text-align:center;"class="errors"><h2><%= flash[:notice] %></h2></div>
+<% end %>
+
 <ul>
     <% @properties.each do |property| %>
-        <li><%= link_to property.name, property %></li>
+        <h3><li><%= link_to property.name, property %></li></h3>
     <% end %>
 </ul>
