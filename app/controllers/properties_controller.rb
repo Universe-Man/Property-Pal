@@ -4,9 +4,6 @@ class PropertiesController < ApplicationController
   def new
     @property = Property.new
     @admins = Admin.all
-    @empty_units = Unit.all.select{|unit| unit.tenants.empty?}
-    @full_units = Unit.all.select{|unit| unit.tenants.any?}
-    @legend = ['Vacant', 'Occupied']
   end
 
   def show
@@ -14,7 +11,7 @@ class PropertiesController < ApplicationController
   end
 
   def index
-    @properties = Property.all
+    @properties = Property.all.sort_by{|p| p.name}
   end
 
   def edit

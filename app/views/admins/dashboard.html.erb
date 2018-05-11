@@ -29,4 +29,7 @@
 <% end %>
 
 
+<img src="<%=Gchart.pie(:data => [@empty_units.length, @full_units.length], :size => '300x300', :title => 'Current vacancies', :legend => @legend)%>" align="right"/>
+
+
 <% link_to 'Show Property', @property  %>

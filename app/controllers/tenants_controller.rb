@@ -31,7 +31,10 @@ class TenantsController < ApplicationController
   end
 
   def index
-    @tenants = Tenant.all
+    @sectors = Sector.all.group_by{|sector| sector.property.name}
+    @units = Unit.all.group_by{|unit| unit.sector.name}
+    @tenants = Tenant.all.group_by{|tenant| tenant.unit}
+    byebug
   end
 
   def edit
