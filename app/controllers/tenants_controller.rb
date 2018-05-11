@@ -1,5 +1,5 @@
 class TenantsController < ApplicationController
-  before_action :is_tenant_logged_in?
+  before_action :is_tenant_logged_in?, except: [:new]
   before_action :fetch_tenant, only: [:show, :edit, :update, :destroy]
   def new
     @tenant = Tenant.new
@@ -17,6 +17,11 @@ class TenantsController < ApplicationController
   end
 
   def success
+  end
+
+  def pay_rent
+    @tenant = Tenant.find(session[:tenant_id])
+
   end
 
   def show

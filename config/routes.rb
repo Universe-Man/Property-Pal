@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get "/admin-dashboard", to: 'admins#dashboard' #, as: "dashboard"
   get "/tenant-dashboard", to: 'tenants#dashboard'
   # get '/tenants/:id/dashboard', to: 'tenants#dashboard', as: 'tenants_dashboard'
-
+  get "pay_rent", to: "tenants#pay_rent"
 
   get "/admins_redir_from_dash", to: "admins#redir_from_dash"
 
