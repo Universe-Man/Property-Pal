@@ -56,7 +56,7 @@ class PropertiesController < ApplicationController
   private
 
   def property_params
-    params.require(:property).permit(:name, :admin_id)
+    params.require(:property).permit(:name, :description, :admin_id)
   end
 
   def fetch_property

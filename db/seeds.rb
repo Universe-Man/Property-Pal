@@ -30,7 +30,7 @@ end
 
 2.times do
   3.times do |i|
-    Property.create(name: Faker::Address.community, admin_id: i+1)
+    Property.create(name: Faker::Address.community, description: Faker::SiliconValley.quote, admin_id: i+1)
   end
 end
 
