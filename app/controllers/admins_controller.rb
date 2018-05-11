@@ -2,7 +2,7 @@
 
 class AdminsController < ApplicationController
   before_action :is_admin_logged_in?, except: [:new]
-  before_action :fetch_admin, only: [:show, :edit, :update, :destroy]
+  before_action :fetch_admin
 
 
   def new
@@ -120,6 +120,10 @@ class AdminsController < ApplicationController
   end
 
   def fetch_admin
-    @admin = Admin.find(params[:id])
+    if !params[:id].nil?
+      @admin = Admin.find(params[:id])
+    else
+      @admin = Admin.find(session[:admin_id])
+    end
   end
 end
