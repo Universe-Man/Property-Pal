@@ -28,6 +28,7 @@ class UnitsController < ApplicationController
   end
 
   def update
+    @unit = Unit.find(params[:id])
     @unit.update(unit_params)
     if @unit.valid?
       flash[:notice] = "Account Updated"
@@ -39,8 +40,10 @@ class UnitsController < ApplicationController
   end
 
   def destroy
+    @unit = Unit.find(params[:id])
     @unit.destroy
-    redirect_to units_path
+    flash[:notice] = "Unit Deleted"
+    redirect_to admin_dashboard_path
   end
 
   private
