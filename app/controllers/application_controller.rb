@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_admin
   helper_method :admin_logged_in?
   helper_method :tenant_logged_in?
+  
   def current_admin
     if session[:admin_id]
       Admin.find(session[:admin_id])

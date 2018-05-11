@@ -1,4 +1,5 @@
 class TenantsController < ApplicationController
+  before_action :is_tenant_logged_in?
   before_action :fetch_tenant, only: [:show, :edit, :update, :destroy]
   def new
     @tenant = Tenant.new
@@ -63,6 +64,13 @@ class TenantsController < ApplicationController
   private
   def tenant_params
     params.require(:tenant).permit(:first_name, :last_name, :email, :password, :hint_password) #, :address_id, :contract_id
+  end
+
+  def is_tenant_logged_in?
+    if !tenant_logged_in?
+      flash[:errors]="Please login. Tenant access currently unavailable."
+      redirect_to login_path
+    end
   end
 
   def fetch_tenant

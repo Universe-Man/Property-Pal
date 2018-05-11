@@ -1,7 +1,7 @@
 
 
 class AdminsController < ApplicationController
-
+  before_action :is_admin_logged_in?
   before_action :fetch_admin, only: [:show, :edit, :update, :destroy]
 
 
@@ -12,10 +12,6 @@ class AdminsController < ApplicationController
   def show
     @admin = Admin.find(params[:id])
     # @properties = Property.all
-  end
-
-
-  def admin_login
   end
 
   def new
@@ -35,8 +31,11 @@ class AdminsController < ApplicationController
   def show
   end
 
+
+
   def index
     @admins = Admin.all
+
   end
 
   def edit
@@ -105,13 +104,19 @@ class AdminsController < ApplicationController
   end
 
   def retrieve_info
-    #byebug
   end
 
   private
 
   def admin_params
     params.require(:admin).permit(:first_name, :last_name, :email, :password, :hint_password, :address_id, :contract_id, :property_id)
+  end
+
+  def is_admin_logged_in?
+    if !admin_logged_in?
+      flash[:errors]="Please login. Access currently unavailable."
+      redirect_to login_path
+    end
   end
 
   def fetch_admin
