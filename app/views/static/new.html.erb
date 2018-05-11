@@ -1,4 +1,10 @@
 <h1>Static#new</h1>
-<%= render "/partials/navigation" %>
+<%if @admin%>
+    <%= render '/partials/admin_navigation' %>
+<%elsif @tenant %>
+    <%= render '/tenants/tenant_navigation'%>
+<%else%>
+    <%= render '/partials/navigation'%>
+<%end%>
 
 <%= render "/partials/login_form" %>

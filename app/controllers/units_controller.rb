@@ -1,5 +1,6 @@
 class UnitsController < ApplicationController
 before_action :fetch_unit, only: [:update, :edit, :show, :destroy]
+before_action :verify_tenant_or_admin
 
   def new
     @unit = Unit.new
@@ -62,6 +63,15 @@ before_action :fetch_unit, only: [:update, :edit, :show, :destroy]
 
   def fetch_unit
     @unit = Unit.find(params[:id])
+  end
+
+  
+  def verify_tenant_or_admin
+    if !session[:tenant_id].nil?
+      @tenant = Tenant.find(session[:tenant_id])
+    elsif !session[:admin_id].nil?
+      @admin = Admin.find(session[:admin_id])
+    end 
   end
 
 end

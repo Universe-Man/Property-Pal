@@ -1,5 +1,5 @@
-
 class PropertiesController < ApplicationController
+  before_action :verify_tenant_or_admin
   before_action :fetch_property, only: [:show, :edit, :update, :destroy]
   def new
     @property = Property.new
@@ -61,5 +61,14 @@ class PropertiesController < ApplicationController
 
   def fetch_property
     @property = Property.find(params[:id])
+  end
+
+  
+  def verify_tenant_or_admin
+    if !session[:tenant_id].nil?
+      @tenant = Tenant.find(session[:tenant_id])
+    elsif !session[:admin_id].nil?
+      @admin = Admin.find(session[:admin_id])
+    end 
   end
 end
