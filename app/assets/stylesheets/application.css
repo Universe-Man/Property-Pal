@@ -160,3 +160,16 @@ https://wallpaperbrowse.com/media/images/minimalist-bridge-wallpaper-background-
  		margin-top:10px;
   	}
  }
+/* Defines Footer information */
+.footer {
+    position: fixed;
+    left: 0;
+    height: 50px;
+    bottom: 0;
+    font-size:20px;
+    width: 100%;
+    text: 24px;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
