@@ -22,6 +22,9 @@ class StaticController < ApplicationController
 
   def destroy
   end
+
+  def about
+  end
     
 private
   def login_params
