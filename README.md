@@ -1,24 +1,20 @@
-# README
+# PLAYBOOK
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Property Pals Demo Gif](./pp_gif.gif)
 
-Things you may want to cover:
+A community board that bridges the gap between property managers and tenants.
+Built on Ruby on Rails, PostgreSQL, and Bootstrap. Follows MVC design patterns.
 
-* Ruby version
+## Getting Started
 
-* System dependencies
+To run on a local server:
 
-* Configuration
+```
+bundle install
 
-* Database creation
+rails db:migrate:reset db:seed
 
-* Database initialization
+rails s
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Live demo found [here](https://property-pal.herokuapp.com/)
