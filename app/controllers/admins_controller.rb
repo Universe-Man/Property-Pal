@@ -11,7 +11,6 @@ class AdminsController < ApplicationController
 
   def show
     @admin = Admin.find(params[:id])
-    # @properties = Property.all
   end
 
   def new

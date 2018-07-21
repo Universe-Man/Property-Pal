@@ -32,9 +32,7 @@ class SectorsController < ApplicationController
       @admin = Admin.find(session[:admin_id])
     end
     @sectors = Sector.all.group_by{|sector| sector.property.name}.sort_by{|prop_name, sector| prop_name}
-    #byebug
-    #.sort{|a,b| a[]}
-    #.sort_by{|prop_name, sector| prop_name}
+
   end
 
   def edit

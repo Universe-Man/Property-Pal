@@ -1,6 +1,6 @@
-# PLAYBOOK
+# Property Pal
 
-![Property Pals Demo Gif](./pp_gif.gif)
+![Property Pal Demo Gif](./pp_gif.gif)
 
 A community board that bridges the gap between property managers and tenants.
 Built on Ruby on Rails, PostgreSQL, and Bootstrap. Follows MVC design patterns.

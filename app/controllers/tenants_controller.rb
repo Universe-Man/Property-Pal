@@ -1,5 +1,5 @@
 class TenantsController < ApplicationController
-  before_action :is_tenant_logged_in?, except: [:new]
+  before_action :is_tenant_logged_in?, except: [:new, :create]
   before_action :fetch_tenant, only: [:show, :edit, :update, :destroy]
   def new
     @tenant = Tenant.new

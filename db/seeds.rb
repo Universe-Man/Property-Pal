@@ -22,7 +22,8 @@ Tenant.destroy_all
 
 Tenant.create(first_name: "mike", last_name: "mike", email: "mike@mike.com", password: "123", hint_password: "hi there", contract_id: rand(2..16), unit_id: 2)
 Tenant.create(first_name: "Rog", last_name: "tenant", email: "tenant@gmail.com", password: "111", hint_password: "hi there", contract_id: rand(2..16), unit_id: 2)
-Admin.create(first_name: "roger", last_name: "roger", email: "r@r.com", password: "111", hint_password: "hi there")
+Admin.create(first_name: "roger", last_name: "roger", email: "admin@gmail.com", password: "admin", hint_password: "hi there")
+Admin.create(first_name: "Stephen", last_name: "Stirling", email: "stephen@gmail.com", password: "stephen", hint_password: "stephen")
 Admin.create(first_name: "Roger", last_name: "Perez", email: "roger@gmail.com", password: "111", hint_password: "hi there")
 3.times do
   Admin.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password(8), hint_password: "hi there")
